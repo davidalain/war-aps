@@ -1,0 +1,10 @@
+- Dúvidas com relação ao snapshot. Manipulação de atributos.
+- Objeto ataque.
+- Pendência: Dados, Fase.
+- Na classe Jogo, como eu trataria o Jogada? Várias Jogadas? Apenas um Jogada?
+- Classe Exército no diagrama conceitual.
+- Classe Continente
+- Classe Dado
+- Classe Ataque.
+- Modificar nome das classes filhas de Fase para: FaseAtacaque e etc.
+- tirar métodos do modelo de domino.
