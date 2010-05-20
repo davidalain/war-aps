@@ -1,4 +1,2 @@
-- (Denis)Dúvidas com relação ao snapshot. Manipulação de atributos.
-
-
+- Snapshot não está de acordo com o diagrama de classe. Relação entre exército e Território.
 
