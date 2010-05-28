@@ -1,4 +1,8 @@
-package br.upe.war;
+package br.upe.war.negocio.jogadores;
+
+import br.upe.war.negocio.Carta;
+import br.upe.war.negocio.jogos.Jogo;
+import br.upe.war.negocio.objetivos.Objetivo;
 
 
 public class Jogador {
@@ -12,10 +16,14 @@ public class Jogador {
 	private String login;
 	 
 	private int cor;
-	 
-	private Territorio[] territorio;
-	 
+	 	 
 	private Carta[] carta;
+	
+	private Objetivo objetivo;
+	
+	public boolean atingiuObjetivo(Jogo jogo){
+		return 	this.objetivo.atingido(this, jogo);
+	}
 
 	public void setLogin(String login) {
 		this.login = login;
@@ -31,14 +39,6 @@ public class Jogador {
 
 	public void setCor(int cor) {
 		this.cor = cor;
-	}
-
-	public Territorio[] getTerritorio() {
-		return territorio;
-	}
-
-	public void setTerritorio(Territorio[] territorio) {
-		this.territorio = territorio;
 	}
 
 	public Carta[] getCarta() {

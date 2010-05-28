@@ -1,7 +1,8 @@
-package br.upe.war;
+package br.upe.war.negocio;
 
 import java.util.ArrayList;
 
+import br.upe.war.negocio.jogadores.Jogador;
 
 public class Continente {
  

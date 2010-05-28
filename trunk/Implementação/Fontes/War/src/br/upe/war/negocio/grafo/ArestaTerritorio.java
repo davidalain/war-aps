@@ -1,6 +1,6 @@
-package br.upe.war.grafo;
+package br.upe.war.negocio.grafo;
 
-import br.upe.war.Territorio;
+import br.upe.war.negocio.Territorio;
 
 public class ArestaTerritorio implements Aresta{
 	

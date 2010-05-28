@@ -1,13 +1,13 @@
-package br.upe.war;
+package br.upe.war.negocio;
 
-import br.upe.war.grafo.Vertice;
+import br.upe.war.negocio.grafo.Vertice;
+import br.upe.war.negocio.jogadores.Jogador;
 
 
 
 public class Territorio extends Vertice {	
 	private int quantidadeExercito;
 	private String nome;
-	 
 	private Jogador dominante;
 	
 	public Territorio(int id, String nome)
@@ -58,6 +58,10 @@ public class Territorio extends Vertice {
 
 	public Jogador getDominante() {
 		return dominante;
+	}
+	
+	public boolean ehDominante(Jogador jogador){
+		return this.dominante.equals(jogador);			
 	}
 
 	public void setDominante(Jogador dominante) {
