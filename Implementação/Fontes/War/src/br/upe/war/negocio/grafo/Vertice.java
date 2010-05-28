@@ -1,4 +1,4 @@
-package br.upe.war.grafo;
+package br.upe.war.negocio.grafo;
 
 public abstract class Vertice {
 		private int id;

@@ -1,4 +1,4 @@
-package br.upe.war;
+package br.upe.war.negocio;
 
 
 public class Carta {

@@ -1,4 +1,4 @@
-package br.upe.war.grafo;
+package br.upe.war.negocio.grafo;
 
 public interface Aresta {
 	 Vertice inicio();

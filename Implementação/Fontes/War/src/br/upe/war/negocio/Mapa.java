@@ -1,12 +1,13 @@
-package br.upe.war;
+package br.upe.war.negocio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.upe.war.grafo.Aresta;
-import br.upe.war.grafo.ArestaTerritorio;
-import br.upe.war.grafo.Grafo;
-import br.upe.war.grafo.Vertice;
+import br.upe.war.negocio.grafo.Aresta;
+import br.upe.war.negocio.grafo.ArestaTerritorio;
+import br.upe.war.negocio.grafo.Grafo;
+import br.upe.war.negocio.grafo.Vertice;
+import br.upe.war.negocio.jogadores.Jogador;
 
 public class Mapa implements Grafo {
  
