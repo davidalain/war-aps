@@ -1,4 +1,4 @@
-package br.upe.war.negocio;
+package br.upe.war.negocio.territorios;
 
 import br.upe.war.negocio.grafo.Vertice;
 import br.upe.war.negocio.jogadores.Jogador;

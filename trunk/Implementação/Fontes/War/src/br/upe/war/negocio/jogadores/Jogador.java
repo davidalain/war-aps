@@ -1,6 +1,6 @@
 package br.upe.war.negocio.jogadores;
 
-import br.upe.war.negocio.Carta;
+import br.upe.war.negocio.cartas.Carta;
 import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.objetivos.Objetivo;
 

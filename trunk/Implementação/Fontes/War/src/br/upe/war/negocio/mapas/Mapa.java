@@ -1,13 +1,15 @@
-package br.upe.war.negocio;
+package br.upe.war.negocio.mapas;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.upe.war.negocio.continentes.Continente;
 import br.upe.war.negocio.grafo.Aresta;
 import br.upe.war.negocio.grafo.ArestaTerritorio;
 import br.upe.war.negocio.grafo.Grafo;
 import br.upe.war.negocio.grafo.Vertice;
 import br.upe.war.negocio.jogadores.Jogador;
+import br.upe.war.negocio.territorios.Territorio;
 
 public class Mapa implements Grafo {
  

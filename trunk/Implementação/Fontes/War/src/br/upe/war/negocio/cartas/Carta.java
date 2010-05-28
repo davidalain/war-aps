@@ -1,4 +1,6 @@
-package br.upe.war.negocio;
+package br.upe.war.negocio.cartas;
+
+import br.upe.war.negocio.territorios.Territorio;
 
 
 public class Carta {
