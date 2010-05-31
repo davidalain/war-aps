@@ -4,7 +4,7 @@ import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.util.Mensagens;
 
-public class FaseReceberExercitos extends Fase {
+public class FaseRecebimentoExercitos extends Fase {
 
 	@Override
 	public void povoarTerritorioConquistado(

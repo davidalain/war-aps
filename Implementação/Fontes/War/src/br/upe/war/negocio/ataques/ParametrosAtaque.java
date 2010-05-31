@@ -1,5 +1,6 @@
 package br.upe.war.negocio.ataques;
 
+import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.parametros.Parametros;
 import br.upe.war.negocio.territorios.Territorio;
@@ -10,8 +11,8 @@ public class ParametrosAtaque extends Parametros{
 	private Territorio defensor;
 	private int quantidadeExercito;
 	
-	public ParametrosAtaque(Jogo jogo) {
-		super(jogo);
+	public ParametrosAtaque(Jogo jogo, Jogador jogador) {
+		super(jogo, jogador);
 		// TODO Auto-generated constructor stub
 	}
 	
