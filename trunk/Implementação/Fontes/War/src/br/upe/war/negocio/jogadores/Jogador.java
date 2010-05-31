@@ -5,7 +5,8 @@ import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.objetivos.Objetivo;
 
 
-public class Jogador {
+public class Jogador 
+{
 	public static int AZUL = 1;
 	public static int VERDE = 2;
 	public static int VERMELHO = 3;
@@ -50,7 +51,7 @@ public class Jogador {
 	}
 	 
 	public boolean equals(Jogador jogador){
-		if(this.cor == jogador.getCor())
+		if(this.login == jogador.getLogin())
 			return true;
 		else
 			return false;
