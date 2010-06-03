@@ -13,7 +13,7 @@ import br.upe.war.negocio.salajogos.SalaJogo;
 import br.upe.war.negocio.util.Mensagens;
 
 public class Jogo {
-	private int id;
+	private String nomeJogo;
 	private ArrayList<Objetivo> possiveisObjetivos;
 	private ArrayList<Jogador> jogadores;
 	private ArrayList<Carta> cartas;
@@ -21,16 +21,24 @@ public class Jogo {
 	private Mapa mapa;
 	private SalaJogo salaJogo;
 	
+	public Jogo(SalaJogo salaJogo)
+	{
+		this.salaJogo = salaJogo;
+	}
 	
 	
-	
-	public int getId() {
-		return id;
+
+	public String getNomeJogo() {
+		return nomeJogo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+
+	public void setNomeJogo(String nomeJogo) {
+		this.nomeJogo = nomeJogo;
 	}
+
+
 
 	protected void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
 	{
@@ -56,6 +64,16 @@ public class Jogo {
 		}
 		
 		return encontrou;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Jogo)
+		{
+			Jogo jogo = (Jogo)obj;
+			return this.nomeJogo.equals(jogo.nomeJogo);
+		}
+		return false;
 	}
 	
 }

@@ -17,6 +17,7 @@ public class FachadaWar
 	private FachadaWar()
 	{
 		this.jogos = ControladorJogo.getInstance();
+		this.salasJogos = ControladorSalaJogo.getInstance();
 	}
 	
 	public synchronized static FachadaWar getInstance()
@@ -35,11 +36,15 @@ public class FachadaWar
 	
 	public void criarSalaJogo(Jogador jogador)
 	{
-		
+		this.salasJogos.criar(jogador);
 	}
 
 	public void iniciarJogo(SalaJogo salaJogo)
 	{
 		this.jogos.iniciar(salaJogo);
+	}
+
+	public int obterSalasJogoCount() {
+		return this.salasJogos.obterCount();
 	}
 }
