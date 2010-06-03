@@ -17,23 +17,6 @@ public class Program {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		FachadaWar fachada = FachadaWar.getInstance();
-		
-		FaseRecebimentoExercitos faseRecebimento = new FaseRecebimentoExercitos();
-		
-		int quantidadeExercitos = 1;
-		
-		ParametrosPovoarTerritorioConquistado parametros = new ParametrosPovoarTerritorioConquistado(new Jogo(), new Jogador(),quantidadeExercitos);
-		
-		try 
-		{
-			fachada.povoarTerritorioConquistado(parametros);
-			
-			
-		} catch (Exception e) 
-		{
-			System.out.println(e.getMessage());
-		}
 		
 		
 
