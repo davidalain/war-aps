@@ -50,4 +50,8 @@ public class ControladorJogo {
 		
 		Jogo novoJogo = new Jogo(salaJogo);
 	}
+
+	public void removerTodos() {
+		this.jogos.clear();
+	}
 }

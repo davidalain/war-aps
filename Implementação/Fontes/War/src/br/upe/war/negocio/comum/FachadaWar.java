@@ -1,10 +1,14 @@
 package br.upe.war.negocio.comum;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.jogos.ControladorJogo;
 import br.upe.war.negocio.salajogos.ControladorSalaJogo;
+import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 import br.upe.war.negocio.salajogos.SalaJogo;
 
 
@@ -34,9 +38,9 @@ public class FachadaWar
 		this.jogos.povoarTerritorioConquistado(parametros);
 	}
 	
-	public void criarSalaJogo(Jogador jogador)
+	public void criarSalaJogo(ParametrosCriarSalaJogo parametros)
 	{
-		this.salasJogos.criar(jogador);
+		this.salasJogos.criar(parametros);
 	}
 
 	public void iniciarJogo(SalaJogo salaJogo)
@@ -46,5 +50,16 @@ public class FachadaWar
 
 	public int obterSalasJogoCount() {
 		return this.salasJogos.obterCount();
+	}
+
+	public Iterator<SalaJogo> obterSalasJogo() 
+	{
+		return this.salasJogos.obter();
+	}
+	
+	public synchronized void reiniciar()
+	{
+		this.jogos.removerTodos();
+		this.salasJogos.removerTodas();
 	}
 }

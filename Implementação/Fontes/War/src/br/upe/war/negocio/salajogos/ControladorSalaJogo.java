@@ -2,6 +2,7 @@ package br.upe.war.negocio.salajogos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import br.upe.war.negocio.jogadores.Jogador;
 
@@ -30,10 +31,23 @@ public class ControladorSalaJogo
 		return this.salasJogo.size();
 	}
 
-	public void criar(Jogador jogador) 
+	public void criar(ParametrosCriarSalaJogo jogador) 
 	{
 		SalaJogo novaSalaJogo = new SalaJogo(jogador);
 		
 		this.salasJogo.add(novaSalaJogo);
+	}
+
+	public Iterator<SalaJogo> obter() 
+	{
+	
+		return this.salasJogo.iterator();
+		
+		
+	}
+
+	public void removerTodas() 
+	{
+		this.salasJogo.clear();
 	}
 }
