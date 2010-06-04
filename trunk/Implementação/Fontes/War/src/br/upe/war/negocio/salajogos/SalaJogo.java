@@ -8,9 +8,20 @@ public class SalaJogo
 {
 	private ArrayList<Jogador> jogadores;
 	
-	public SalaJogo(Jogador jogadorCriador)
+	private String senha;
+	
+	public SalaJogo(ParametrosCriarSalaJogo parametros)
 	{
 		this.jogadores = new ArrayList<Jogador>();
-		this.jogadores.add(jogadorCriador);
+		this.jogadores.add(parametros.getJogador());
+		if(parametros.getSenha() != null)
+		{
+			this.senha = parametros.getSenha();
+		}
+	}
+	
+	public boolean possuiSenha()
+	{
+		return this.senha != null;
 	}
 }
