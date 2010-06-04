@@ -1,0 +1,4 @@
+- Configurar Build Path
+	-Add external Jar
+- Configurar o ANT
+	- Add external Jar
