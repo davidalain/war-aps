@@ -1,18 +1,20 @@
 package br.upe.war.apresentacao;
 
-import br.upe.war.comunicacao.mensagens.Mensagem;
-import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
+import java.io.IOException;
+
+import br.upe.war.comunicacao.recebimento.RecebimentoPacote;
+
 
 public class ProgramaServidor 
 {
 
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException, ClassNotFoundException 
 	{
-		Mensagem m = new MensagemCriarSalaJogo();
+		RecebimentoPacote r = new RecebimentoPacote();
 		
-
-		
-		
+		Thread nova = new Thread(r);
+				
+		nova.start();
 	}
 
 }

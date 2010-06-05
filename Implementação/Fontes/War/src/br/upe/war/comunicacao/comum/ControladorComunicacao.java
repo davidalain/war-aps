@@ -2,11 +2,10 @@ package br.upe.war.comunicacao.comum;
 
 
 
+import java.io.IOException;
+
 import br.upe.war.comunicacao.envio.EnvioPacote;
 import br.upe.war.comunicacao.mensagens.Mensagem;
-import br.upe.war.negocio.comum.FachadaWar;
-
-import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 
 
 public class ControladorComunicacao 
@@ -27,7 +26,7 @@ public class ControladorComunicacao
 		return instance;
 	}
 	
-	public void enviarMensagem(Mensagem m)
+	public void enviarMensagem(Mensagem m) throws IOException
 	{
 		EnvioPacote.enviarMensagem(m);
 	}
