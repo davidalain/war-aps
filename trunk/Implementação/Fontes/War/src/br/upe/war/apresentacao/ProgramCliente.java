@@ -1,5 +1,7 @@
 package br.upe.war.apresentacao;
 
+import java.io.IOException;
+
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
 
@@ -8,17 +10,19 @@ public class ProgramCliente {
 
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException 
 	{
 		ControladorComunicacao comunicao = ControladorComunicacao.getInstance();
 		
-		while(true)
-		{
+		
 			MensagemCriarSalaJogo m = new MensagemCriarSalaJogo();
+			m.setEnderecoJogador("127.0.0.1");
 			
-			comunicao.enviarMensagem(m);
-		}
+			while(true)
+				comunicao.enviarMensagem(m);
+		
 	}
 
 }
