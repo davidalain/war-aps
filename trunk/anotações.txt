@@ -1,0 +1,9 @@
+- Criar arestas do mapa
+- Adiantar criação da sala de jogo e do jogo usando a comunicação entre cliente e servidor.
+
+
+
+- DÚVIDas
+	Comunicação do Jogo, dependência dos pacotes.
+	Diagrama de sequência UML 2.0.
+	
