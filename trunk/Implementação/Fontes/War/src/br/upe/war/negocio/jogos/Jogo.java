@@ -1,6 +1,7 @@
 package br.upe.war.negocio.jogos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.cartas.Carta;
@@ -9,6 +10,7 @@ import br.upe.war.negocio.jogadas.Jogada;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.mapas.Mapa;
 import br.upe.war.negocio.objetivos.Objetivo;
+import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
 public class Jogo {
@@ -22,6 +24,7 @@ public class Jogo {
 	public Jogo()
 	{
 		this.jogadores = new ArrayList<Jogador>();
+		this.mapa = new Mapa();
 	}
 	
 	public void addJogador(Jogador jogador)
@@ -31,7 +34,8 @@ public class Jogo {
 	
 	
 
-	public String getNomeJogo() {
+	public String getNomeJogo() 
+	{
 		return nomeJogo;
 	}
 
@@ -77,6 +81,30 @@ public class Jogo {
 			return this.nomeJogo.equals(jogo.nomeJogo);
 		}
 		return false;
+	}
+
+	public void distribuirTerritorios() 
+	{
+		Iterator<Territorio> territorios = this.mapa.obterTerritorios();
+		
+		int i = 0;
+		while(territorios.hasNext())
+		{
+			Territorio territorio = territorios.next();
+			
+			Jogador jogador = this.jogadores.get(i);
+			
+			territorio.setDominante(jogador);
+			
+			if(i == this.jogadores.size() - 1)
+			{
+				i = 0;
+			}
+			else
+			{
+				i++;
+			}		
+		}
 	}
 	
 }

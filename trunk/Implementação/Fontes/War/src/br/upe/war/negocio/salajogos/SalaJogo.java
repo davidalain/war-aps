@@ -45,9 +45,10 @@ public class SalaJogo
 		
 		validarNumeroJogares();
 		
+		criarJogo();
 		
 		
-		//criarJogo();
+
 	}
 
 	private void criarJogo() 
@@ -58,6 +59,8 @@ public class SalaJogo
 		{
 			this.jogo.addJogador(j);
 		}
+		
+		this.jogo.distribuirTerritorios();
 	}
 
 	/**
