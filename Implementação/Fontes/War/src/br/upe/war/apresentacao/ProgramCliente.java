@@ -18,7 +18,7 @@ public class ProgramCliente {
 		
 		
 			MensagemCriarSalaJogo m = new MensagemCriarSalaJogo();
-			m.setEnderecoJogador("127.0.0.1");
+			m.setEndereco("127.0.0.1");
 			
 			while(true)
 				comunicao.enviarMensagem(m);

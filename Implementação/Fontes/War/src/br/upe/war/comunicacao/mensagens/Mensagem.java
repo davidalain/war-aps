@@ -7,7 +7,7 @@ import br.upe.war.negocio.excecoes.WarException;
 
 public abstract class Mensagem implements Serializable
 {
-	private String enderecoJogador;
+	private String endereco;
 
 	/**
 	 * 
@@ -16,12 +16,13 @@ public abstract class Mensagem implements Serializable
 	
 	public abstract void tratarMensagem() throws WarException, IOException;
 
-	public String getEnderecoJogador() {
-		return enderecoJogador;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEnderecoJogador(String enderecoJogador) {
-		this.enderecoJogador = enderecoJogador;
+	public void setEndereco(String enderecoJogador) 
+	{
+		this.endereco = enderecoJogador;
 	}
 
 	

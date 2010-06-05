@@ -1,6 +1,7 @@
 package br.upe.war.negocio.continentes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.territorios.Territorio;
@@ -63,6 +64,16 @@ public class Continente {
 	public boolean equals(Continente c){
 		return this.nome.equalsIgnoreCase(c.getNome());
 			
+	}
+
+	public Iterator<Territorio> obterTerritorios() 
+	{
+		return this.territorios.iterator();
+	}
+
+	public void addTerritorio(Territorio territorio) 
+	{
+		this.territorios.add(territorio);
 	}
 	 
 }

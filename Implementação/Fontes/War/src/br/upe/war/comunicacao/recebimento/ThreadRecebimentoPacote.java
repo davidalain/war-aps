@@ -42,7 +42,7 @@ public class ThreadRecebimentoPacote implements Runnable{
 				
 				Mensagem mensagem = (Mensagem) input.readObject();
 				
-				System.out.println(mensagem.getEnderecoJogador());
+				System.out.println(mensagem.getEndereco());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
