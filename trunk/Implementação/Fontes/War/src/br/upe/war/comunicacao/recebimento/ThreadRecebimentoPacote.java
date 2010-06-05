@@ -7,11 +7,11 @@ import java.net.Socket;
 
 import br.upe.war.comunicacao.mensagens.Mensagem;
 
-public class RecebimentoPacote implements Runnable{
+public class ThreadRecebimentoPacote implements Runnable{
 	
 	private ServerSocket socket;
 	
-	public RecebimentoPacote() throws IOException{
+	public ThreadRecebimentoPacote() throws IOException{
 		this.socket = new ServerSocket(6789);
 	}
 	

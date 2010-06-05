@@ -2,7 +2,7 @@ package br.upe.war.apresentacao;
 
 import java.io.IOException;
 
-import br.upe.war.comunicacao.recebimento.RecebimentoPacote;
+import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
 
 
 public class ProgramaServidor 
@@ -10,7 +10,7 @@ public class ProgramaServidor
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException 
 	{
-		RecebimentoPacote r = new RecebimentoPacote();
+		ThreadRecebimentoPacote r = new ThreadRecebimentoPacote();
 		
 		Thread nova = new Thread(r);
 				
