@@ -9,8 +9,7 @@ import br.upe.war.negocio.jogadas.Jogada;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.mapas.Mapa;
 import br.upe.war.negocio.objetivos.Objetivo;
-import br.upe.war.negocio.salajogos.SalaJogo;
-import br.upe.war.negocio.util.Mensagens;
+import br.upe.war.negocio.util.MensagemErro;
 
 public class Jogo {
 	private String nomeJogo;
@@ -19,11 +18,15 @@ public class Jogo {
 	private ArrayList<Carta> cartas;
 	private Jogada jogadaAtual;
 	private Mapa mapa;
-	private SalaJogo salaJogo;
 	
-	public Jogo(SalaJogo salaJogo)
+	public Jogo()
 	{
-		this.salaJogo = salaJogo;
+		this.jogadores = new ArrayList<Jogador>();
+	}
+	
+	public void addJogador(Jogador jogador)
+	{
+		this.jogadores.add(jogador);
 	}
 	
 	
@@ -40,11 +43,11 @@ public class Jogo {
 
 
 
-	protected void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
+	public void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
 	{
 		if(!jogadorEstaNoJogo(parametros.getJogador()))
 		{
-			throw new WarException(Mensagens.JOGADOR_NAO_ESTA_NO_JOGO);
+			throw new WarException(MensagemErro.JOGADOR_NAO_ESTA_NO_JOGO);
 		}
 		
 		this.jogadaAtual.povoarTerritorioConquistado(parametros);

@@ -1,15 +1,15 @@
 package br.upe.war.negocio.ataques;
 
 import br.upe.war.negocio.jogadores.Jogador;
-import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.parametros.Parametros;
+import br.upe.war.negocio.salajogos.SalaJogo;
 
 
 public class ParametrosPovoarTerritorioConquistado extends Parametros {
 	private int quantidadeExercito;
 	
-	public ParametrosPovoarTerritorioConquistado(Jogo jogo, Jogador jogador, int quantidadeExercito){
-		super(jogo, jogador);
+	public ParametrosPovoarTerritorioConquistado(SalaJogo salaJogo, Jogador jogador, int quantidadeExercito){
+		super(salaJogo, jogador);
 		this.quantidadeExercito = quantidadeExercito;
 	}
 	

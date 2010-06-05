@@ -8,6 +8,8 @@ public class ParametrosCriarSalaJogo
 	private Jogador jogador;
 	
 	private String senha;
+	
+	private String endereco;
 
 	public Jogador getJogador() {
 		return jogador;

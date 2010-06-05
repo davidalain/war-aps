@@ -1,6 +1,6 @@
 package br.upe.war.negocio.util;
 
-public class Mensagens 
+public class MensagemErro 
 {
 
 	public static final String POVOAR_FASE_RECEBIMENTO = "Não é possível povoar território na fase de recebimento de exército";
@@ -19,4 +19,9 @@ public class Mensagens
 	
 	public static final String POVOAMETO_SUPERIOR_DADOS_ATAQUE = "A quantidade de exércitos utilizados para povoar o território conquistado deve ser igual a no máximo o número de exércitos envolvidos no último ataque.";
 
+	public static final String SALA_JOGO_EXISTENTE = "Já existe sala de jogo criada com os parâmetros informados.";
+
+	public static final String NUMERO_JOGADORES_INSUFICIENTES = "O número de jogadores deve ser superior a 3 para iniciar um jogo";
+
+	public static final String NUMERO_JOGADORES_SUPERIOR_LIMITE = "Um jogo deve possuir no máximo 6 jogadores";
 }

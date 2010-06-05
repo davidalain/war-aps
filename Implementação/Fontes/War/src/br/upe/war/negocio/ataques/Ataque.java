@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import br.upe.war.negocio.dados.Dado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.territorios.Territorio;
-import br.upe.war.negocio.util.Mensagens;
+import br.upe.war.negocio.util.MensagemErro;
 
 public class Ataque 
 {
@@ -24,19 +24,19 @@ public class Ataque
 		//RNG03
 		if(!aoMenosUmTerritorioUtilizado(quantidadeExercitoDeslocada))
 		{
-			throw new WarException(Mensagens.EXERCITO_OCUPACAO_NAO_DESLOCADO);
+			throw new WarException(MensagemErro.EXERCITO_OCUPACAO_NAO_DESLOCADO);
 		}
 		
 		//RNG03
 		if(!permaneceraTerritorioOcupacao(quantidadeExercitoDeslocada))
 		{
-			throw new WarException(Mensagens.EXERCITO_OCUPACAO_INEXISTENTE);
+			throw new WarException(MensagemErro.EXERCITO_OCUPACAO_INEXISTENTE);
 		}
 		
 		//RN07 do UC11
 		if(!exercitosDeslocadosIgualNoMaximoDadosAtaque(quantidadeExercitoDeslocada))
 		{
-			throw new WarException(Mensagens.POVOAMETO_SUPERIOR_DADOS_ATAQUE);
+			throw new WarException(MensagemErro.POVOAMETO_SUPERIOR_DADOS_ATAQUE);
 		}
 		
 		this.territorioDefensor.setDominante(this.territorioAtacante.getDominante());

@@ -1,8 +1,5 @@
 package br.upe.war.testes.testeUC02;
 
-
-
-
 import java.util.Iterator;
 
 import br.upe.war.negocio.comum.FachadaWar;
@@ -12,7 +9,7 @@ import br.upe.war.negocio.salajogos.SalaJogo;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-public class TesteUC02_R001 extends TestCase
+public class TesteUC02_R002 extends TestCase
 {
 	
 	@Override
@@ -28,7 +25,7 @@ public class TesteUC02_R001 extends TestCase
 	/***
 	 * Criação da primeira sala de jogo sem senha
 	 */
-	public void testeUC02_R001_C001()
+	public void testeUC02_R002_C001()
 	{		
 		
 		FachadaWar fachada = FachadaWar.getInstance();
@@ -38,6 +35,8 @@ public class TesteUC02_R001 extends TestCase
 		ParametrosCriarSalaJogo parametros = new ParametrosCriarSalaJogo();
 		
 		parametros.setJogador(jogador);
+		
+		parametros.setSenha("Senha");
 		
 		fachada.criarSalaJogo(parametros);
 		
@@ -50,13 +49,13 @@ public class TesteUC02_R001 extends TestCase
 		
 		SalaJogo salaJogo = salasJogo.next();
 		
-		assertFalse(salaJogo.possuiSenha());
+		assertTrue(salaJogo.possuiSenha());
 	}
 	
 	/***
 	 * Criação de uma sala de jogo sem senha senha
 	 */
-	public void testeUC02_R001_C002()
+	public void testeUC02_R002_C002()
 	{
 		
 		//Estado inicial
@@ -75,6 +74,8 @@ public class TesteUC02_R001 extends TestCase
 		
 		
 
+		parametros.setSenha("Senha");
+		
 		fachada.criarSalaJogo(parametros);
 
 		int quantidadeSalas = fachada.obterSalasJogoCount();
@@ -89,7 +90,7 @@ public class TesteUC02_R001 extends TestCase
 		
 		SalaJogo salaJogo2 = salasJogo.next();
 		
-		assertFalse(salaJogo2.possuiSenha());
+		assertTrue(salaJogo2.possuiSenha());
 		
 		
 		
