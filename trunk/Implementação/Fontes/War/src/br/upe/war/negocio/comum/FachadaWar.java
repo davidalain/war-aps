@@ -15,12 +15,10 @@ import br.upe.war.negocio.salajogos.SalaJogo;
 public class FachadaWar 
 {
 	private static FachadaWar instance;
-	private ControladorJogo jogos;
 	private ControladorSalaJogo salasJogos;
 	
 	private FachadaWar()
 	{
-		this.jogos = ControladorJogo.getInstance();
 		this.salasJogos = ControladorSalaJogo.getInstance();
 	}
 	
@@ -35,7 +33,7 @@ public class FachadaWar
 	
 	public void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
 	{
-		this.jogos.povoarTerritorioConquistado(parametros);
+		this.salasJogos.povoarTerritorioConquistado(parametros);
 	}
 	
 	public void criarSalaJogo(ParametrosCriarSalaJogo parametros)
@@ -43,9 +41,9 @@ public class FachadaWar
 		this.salasJogos.criar(parametros);
 	}
 
-	public void iniciarJogo(SalaJogo salaJogo)
+	public void iniciarJogo(SalaJogo salaJogo) throws WarException
 	{
-		this.jogos.iniciar(salaJogo);
+		this.salasJogos.iniciarJogo(salaJogo);
 	}
 
 	public int obterSalasJogoCount() {
@@ -59,7 +57,6 @@ public class FachadaWar
 	
 	public synchronized void reiniciar()
 	{
-		this.jogos.removerTodos();
 		this.salasJogos.removerTodas();
 	}
 }

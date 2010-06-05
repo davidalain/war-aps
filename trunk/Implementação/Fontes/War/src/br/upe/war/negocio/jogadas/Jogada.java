@@ -4,7 +4,7 @@ import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.fases.Fase;
 import br.upe.war.negocio.jogadores.Jogador;
-import br.upe.war.negocio.util.Mensagens;
+import br.upe.war.negocio.util.MensagemErro;
 
 public class Jogada {
 	private Fase faseAtual;
@@ -14,7 +14,7 @@ public class Jogada {
 	{
 		if(!jogadorEstaNaJogadaAtual(parametros.getJogador()))
 		{
-			throw new WarException(Mensagens.JOGADOR_NAO_ESTA_NA_JOGADA_ATUAL);
+			throw new WarException(MensagemErro.JOGADOR_NAO_ESTA_NA_JOGADA_ATUAL);
 		}
 		
 		this.faseAtual.povoarTerritorioConquistado(parametros);

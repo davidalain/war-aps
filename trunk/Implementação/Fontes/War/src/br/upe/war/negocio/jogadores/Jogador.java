@@ -12,7 +12,7 @@ public class Jogador
 	public static int VERMELHO = 3;
 	public static int BRANCO = 4;
 	public static int PRETO = 5;
-	public static int AMARELO = 1;
+	public static int AMARELO = 6;
  
 	private String login;
 	 
@@ -21,7 +21,7 @@ public class Jogador
 	private Carta[] carta;
 	
 	private Objetivo objetivo;
-	
+
 	public boolean atingiuObjetivo(Jogo jogo){
 		return 	this.objetivo.atingido(this, jogo);
 	}

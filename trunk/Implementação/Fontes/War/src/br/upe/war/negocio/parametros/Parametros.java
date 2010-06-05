@@ -1,12 +1,11 @@
 package br.upe.war.negocio.parametros;
 
 import br.upe.war.negocio.jogadores.Jogador;
-
-import br.upe.war.negocio.jogos.Jogo;
+import br.upe.war.negocio.salajogos.SalaJogo;
 
 
 public abstract class Parametros {
-	private Jogo jogo;
+	private SalaJogo salaJogo;
 	private Jogador jogador;
 	
 	
@@ -20,16 +19,16 @@ public abstract class Parametros {
 		this.jogador = jogador;
 	}
 
-	public Parametros(Jogo jogo, Jogador jogador){
-		this.jogo = jogo;
+	public Parametros(SalaJogo salaJogo, Jogador jogador){
+		this.salaJogo = salaJogo;
 		this.jogador = jogador;
 	}
 	
-	public Jogo getJogo() {
-		return jogo;
+	public SalaJogo getSalaJogo() {
+		return salaJogo;
 	}
 
-	public void setJogo(Jogo jogo) {
-		this.jogo = jogo;
+	public void setSalaJogo(SalaJogo salaJogo) {
+		this.salaJogo = salaJogo;
 	}
 }

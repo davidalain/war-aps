@@ -9,6 +9,7 @@ public class TesteUC02
 	{
 		TestSuite suite = new TestSuite("UC02");
 		suite.addTestSuite(TesteUC02_R001.class);
+		suite.addTestSuite(TesteUC02_R002.class);
 		
 		return suite;
 	}

@@ -3,7 +3,7 @@ package br.upe.war.negocio.fases;
 import br.upe.war.negocio.ataques.Ataque;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
-import br.upe.war.negocio.util.Mensagens;
+import br.upe.war.negocio.util.MensagemErro;
 
 public class FaseAtaque extends Fase 
 {
@@ -17,7 +17,7 @@ public class FaseAtaque extends Fase
 
 		if(this.ataque == null)
 		{
-			throw new WarException(Mensagens.ATAQUE_INEXISTENTE);
+			throw new WarException(MensagemErro.ATAQUE_INEXISTENTE);
 		}
 		this.ataque.povoarTerritorioConquistado(parametros);
 		
