@@ -7,6 +7,7 @@
 	 * @author David Alain
 	 */
 	public class Main extends Sprite {
+		private var tela:TelaPrincipal;
 		
 		public function Main():void {
 			if (stage) init();
@@ -15,7 +16,15 @@
 		
 		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
+			
+			this.tela = new TelaPrincipal(22,null);
+			
+			
+			
+			
+			this.addChild(tela);
+			
+			
 		}
 		
 	}
