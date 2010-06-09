@@ -13,7 +13,9 @@ public class MensagemErro
 
 	public static final String EXERCITO_OCUPACAO_NAO_DESLOCADO = "Ao menos um território deverá ser deslocado.";
 	
-	public static final String EXERCITO_OCUPACAO_INEXISTENTE = "O território de ocupação não pode ser deslocado.";
+	public static final String POVOAMENTO_UTILIZOU_TODOS_EXERCITOS = "O território de ocupação não pode ser deslocado.";
+	
+	public static final String ATAQUE_UTILIZOU_TODOS_EXERCITOS = "O território de ocupação não pode ser utilizado no ataque.";
 	
 	public static final String ATAQUE_INEXISTENTE = "Não existe um ataque em andamento";
 	
@@ -24,4 +26,10 @@ public class MensagemErro
 	public static final String NUMERO_JOGADORES_INSUFICIENTES = "O número de jogadores deve ser superior a 3 para iniciar um jogo";
 
 	public static final String NUMERO_JOGADORES_SUPERIOR_LIMITE = "Um jogo deve possuir no máximo 6 jogadores";
+
+	public static final String ATAQUE_TERRITORIOS_IGUAIS = "Não é possível realizar um ataque ao mesmo território";
+
+	public static final String JOGADOR_DEVE_SER_ATACANTE = "O jogador deve ser o dominante do território atacante";
+
+	public static final String ATAQUE_EXERCITOS_INCORRETOS = "O número de exércitos para atacar deve ser maior que zero e menor ou igual a três";
 }

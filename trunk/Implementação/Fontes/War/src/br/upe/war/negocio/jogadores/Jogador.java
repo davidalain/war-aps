@@ -21,6 +21,11 @@ public class Jogador
 	private Carta[] carta;
 	
 	private Objetivo objetivo;
+	
+	public Jogador(String login)
+	{
+		this.login = login;
+	}
 
 	public boolean atingiuObjetivo(Jogo jogo){
 		return 	this.objetivo.atingido(this, jogo);
@@ -49,12 +54,17 @@ public class Jogador
 	public void setCarta(Carta[] carta) {
 		this.carta = carta;
 	}
-	 
-	public boolean equals(Jogador jogador){
-		if(this.login == jogador.getLogin())
-			return true;
-		else
-			return false;
+	
+	@Override
+	public boolean equals(Object o) 
+	{
+		if(o instanceof Jogador)
+		{
+			Jogador j = (Jogador)o;
+			return this.login.equals(j.login);
+		}
+		return false;
 	}
+	
 }
  

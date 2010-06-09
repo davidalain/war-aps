@@ -3,7 +3,6 @@ package br.upe.war.negocio.salajogos;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.jogadores.Jogador;

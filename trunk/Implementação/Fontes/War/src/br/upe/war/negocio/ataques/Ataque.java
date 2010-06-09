@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import br.upe.war.negocio.dados.Dado;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.excecoes.WarValidationException;
+import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
@@ -17,27 +19,60 @@ public class Ataque
 	
 	private Territorio territorioDefensor;
 	
-	public void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
+	public Ataque(Territorio territorioAtacante, Territorio territorioDefensor) throws WarException
+	{
+		WarValidationException wve = new WarValidationException();
+		
+		wve.<Territorio>compararDiferentes(territorioAtacante, territorioDefensor, MensagemErro.ATAQUE_TERRITORIOS_IGUAIS);
+
+		wve.validar();
+		
+		this.territorioAtacante = territorioAtacante;
+		this.territorioDefensor = territorioDefensor;
+		
+	}
+	
+	public void setQuantidadeExercitos(int quantidadeExercitos) throws WarValidationException
+	{
+		WarValidationException wve = new WarValidationException();
+		
+		//RNG03
+		wve.comparar(true, permaneceraTerritorioOcupacao(quantidadeExercitos), MensagemErro.ATAQUE_UTILIZOU_TODOS_EXERCITOS);
+		
+		wve.comparar(true, validarQuantidadeExercitosAtaque(quantidadeExercitos), MensagemErro.ATAQUE_EXERCITOS_INCORRETOS);
+		
+		wve.validar();
+	
+		this.dadosAtaque = new ArrayList<Dado>();
+		for (int i = 0; i < quantidadeExercitos ; i++) 
+		{
+			this.dadosAtaque.add(new Dado());
+		}
+	}
+	private boolean validarQuantidadeExercitosAtaque(int numeroExercitos) 
+	{
+		return numeroExercitos <= 3 && numeroExercitos > 0;
+	}
+	public void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarValidationException
 	{
 		int quantidadeExercitoDeslocada = parametros.getQuantidadeExercito();
 		
-		//RNG03
-		if(!aoMenosUmTerritorioUtilizado(quantidadeExercitoDeslocada))
-		{
-			throw new WarException(MensagemErro.EXERCITO_OCUPACAO_NAO_DESLOCADO);
-		}
+		WarValidationException wve = new WarValidationException();
 		
 		//RNG03
-		if(!permaneceraTerritorioOcupacao(quantidadeExercitoDeslocada))
-		{
-			throw new WarException(MensagemErro.EXERCITO_OCUPACAO_INEXISTENTE);
-		}
+		wve.comparar(true, aoMenosUmTerritorioUtilizado(quantidadeExercitoDeslocada), MensagemErro.EXERCITO_OCUPACAO_NAO_DESLOCADO);
+		
+		
+		//RNG03
+		wve.comparar(true, permaneceraTerritorioOcupacao(quantidadeExercitoDeslocada), MensagemErro.POVOAMENTO_UTILIZOU_TODOS_EXERCITOS);
+		
 		
 		//RN07 do UC11
-		if(!exercitosDeslocadosIgualNoMaximoDadosAtaque(quantidadeExercitoDeslocada))
-		{
-			throw new WarException(MensagemErro.POVOAMETO_SUPERIOR_DADOS_ATAQUE);
-		}
+		wve.comparar(true, exercitosDeslocadosIgualNoMaximoDadosAtaque(quantidadeExercitoDeslocada), MensagemErro.POVOAMETO_SUPERIOR_DADOS_ATAQUE);
+		
+		wve.<Jogador>compararIguais(this.territorioAtacante.getDominante(), parametros.getJogador(), MensagemErro.JOGADOR_DEVE_SER_ATACANTE);
+		
+		wve.validar();
 		
 		this.territorioDefensor.setDominante(this.territorioAtacante.getDominante());
 		
@@ -47,19 +82,20 @@ public class Ataque
 	
 	}
 	
-	public boolean exercitosDeslocadosIgualNoMaximoDadosAtaque(int quantidade)
+	private boolean exercitosDeslocadosIgualNoMaximoDadosAtaque(int quantidade)
 	{
-		return this.dadosAtaque.size() >= quantidade;
+		return (this.dadosAtaque != null && this.dadosAtaque.size() >= quantidade);
 	}
 	
-	public boolean permaneceraTerritorioOcupacao(int quantidade)
+	
+	private boolean permaneceraTerritorioOcupacao(int quantidade)
 	{
 		int quantidadeExercitosTerritorioAtaque = this.territorioAtacante.getQuantidadeExercito();
 		
 		return (quantidadeExercitosTerritorioAtaque - quantidade) > 0;
 	}
 	
-	public boolean aoMenosUmTerritorioUtilizado(int quantidade)
+	private boolean aoMenosUmTerritorioUtilizado(int quantidade)
 	{
 		return quantidade > 0;
 	}
