@@ -4,15 +4,15 @@
 <flex-config>
   <compiler>
     <source-path append="true">
-      <path-element>D:\war-aps\trunk\Implementação\Fontes\War\src\flash\src</path-element>
+      <path-element>D:\war-aps\trunk\Implementação\Fontes\War\src\br\upe\war\apresentacao\flash\src</path-element>
       <path-element>D:\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\war-aps\trunk\Implementação\Fontes\War\src\flash\lib\TelaPrincipal.swc</path-element>
+      <path-element>D:\war-aps\trunk\Implementação\Fontes\War\src\br\upe\war\apresentacao\flash\lib\TelaPrincipal.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\war-aps\trunk\Implementação\Fontes\War\src\flash\src\Main.as</path-element>
+    <path-element>D:\war-aps\trunk\Implementação\Fontes\War\src\br\upe\war\apresentacao\flash\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
