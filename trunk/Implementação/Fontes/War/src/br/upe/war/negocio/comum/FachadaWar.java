@@ -1,4 +1,4 @@
-package br.upe.war.negocio.comum;
+	package br.upe.war.negocio.comum;
 
 import java.util.Iterator;
 

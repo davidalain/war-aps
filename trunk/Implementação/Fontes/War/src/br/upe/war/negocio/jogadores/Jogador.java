@@ -27,6 +27,12 @@ public class Jogador
 		this.login = login;
 	}
 
+	public Jogador(String login, int cor) {
+		super();
+		this.login = login;
+		this.cor = cor;
+	}
+
 	public boolean atingiuObjetivo(Jogo jogo){
 		return 	this.objetivo.atingido(this, jogo);
 	}
