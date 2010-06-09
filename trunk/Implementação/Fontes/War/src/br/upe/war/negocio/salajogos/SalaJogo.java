@@ -21,6 +21,7 @@ public class SalaJogo
 	{
 		this.jogadores = new ArrayList<Jogador>();
 		this.jogadores.add(parametros.getJogador());
+		
 		if(parametros.getSenha() != null)
 		{
 			this.senha = parametros.getSenha();

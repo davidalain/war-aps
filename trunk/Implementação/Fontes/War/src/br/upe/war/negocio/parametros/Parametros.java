@@ -8,9 +8,6 @@ public abstract class Parametros {
 	private SalaJogo salaJogo;
 	private Jogador jogador;
 	
-	
-
-
 	public Jogador getJogador() {
 		return jogador;
 	}

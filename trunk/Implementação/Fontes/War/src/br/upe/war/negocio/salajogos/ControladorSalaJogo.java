@@ -37,10 +37,9 @@ public class ControladorSalaJogo
 		return this.salasJogo.size();
 	}
 
-	public void criar(ParametrosCriarSalaJogo parametros) 
+	public void criarSalaJogo(ParametrosCriarSalaJogo parametros) 
 	{
 
-		
 		SalaJogo novaSalaJogo = new SalaJogo(parametros);
 		
 		this.salasJogo.add(novaSalaJogo);
