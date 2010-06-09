@@ -1,12 +1,9 @@
 package br.upe.war.negocio.comum;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
-import br.upe.war.negocio.jogadores.Jogador;
-import br.upe.war.negocio.jogos.ControladorJogo;
 import br.upe.war.negocio.salajogos.ControladorSalaJogo;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 import br.upe.war.negocio.salajogos.SalaJogo;

@@ -2,12 +2,12 @@ package br.upe.war.testes.testeUC02;
 
 import java.util.Iterator;
 
+import junit.framework.Assert;
+import junit.framework.TestCase;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 import br.upe.war.negocio.salajogos.SalaJogo;
-import junit.framework.Assert;
-import junit.framework.TestCase;
 
 public class TesteUC02_R002 extends TestCase
 {
@@ -30,7 +30,7 @@ public class TesteUC02_R002 extends TestCase
 		
 		FachadaWar fachada = FachadaWar.getInstance();
 		
-		Jogador jogador = new Jogador();
+		Jogador jogador = new Jogador("Jogador 1");
 		
 		ParametrosCriarSalaJogo parametros = new ParametrosCriarSalaJogo();
 		
@@ -62,7 +62,7 @@ public class TesteUC02_R002 extends TestCase
 		
 		FachadaWar fachada = FachadaWar.getInstance();
 		
-		Jogador jogador = new Jogador();
+		Jogador jogador = new Jogador("Jogador 2");
 		
 		ParametrosCriarSalaJogo parametros = new ParametrosCriarSalaJogo();
 		

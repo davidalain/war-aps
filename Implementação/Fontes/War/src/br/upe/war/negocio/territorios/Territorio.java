@@ -47,14 +47,8 @@ public class Territorio extends Vertice {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
+	}	
 	
-	public boolean equals(Territorio territorio){
-		if(this.nome.equals(territorio.getNome()))
-			return true;
-		
-		return false;
-	}
 
 	public Jogador getDominante() {
 		return dominante;

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.cartas.Carta;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadas.Jogada;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.mapas.Mapa;
