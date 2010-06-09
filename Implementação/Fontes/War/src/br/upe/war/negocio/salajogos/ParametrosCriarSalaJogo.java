@@ -9,7 +9,9 @@ public class ParametrosCriarSalaJogo
 	
 	private String senha;
 	
-	private String endereco;
+	private String nomeSala;
+	
+	private int numeroJogadores;
 
 	public Jogador getJogador() {
 		return jogador;
@@ -25,6 +27,22 @@ public class ParametrosCriarSalaJogo
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getNomeSala() {
+		return nomeSala;
+	}
+
+	public void setNomeSala(String nomeSala) {
+		this.nomeSala = nomeSala;
+	}
+
+	public int getNumeroJogadores() {
+		return numeroJogadores;
+	}
+
+	public void setNumeroJogadores(int numeroJogadores) {
+		this.numeroJogadores = numeroJogadores;
 	}
 	
 	

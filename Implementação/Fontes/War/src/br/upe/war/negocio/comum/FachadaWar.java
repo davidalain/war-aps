@@ -35,7 +35,7 @@ public class FachadaWar
 	
 	public void criarSalaJogo(ParametrosCriarSalaJogo parametros)
 	{
-		this.salasJogos.criar(parametros);
+		this.salasJogos.criarSalaJogo(parametros);
 	}
 
 	public void iniciarJogo(SalaJogo salaJogo) throws WarException

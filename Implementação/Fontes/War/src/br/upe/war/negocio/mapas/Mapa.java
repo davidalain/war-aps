@@ -35,6 +35,7 @@ public class Mapa implements Grafo {
 		int numTerritorios = obterNumeroTerritorios();		
 		vertices = new int[numTerritorios][numTerritorios];
 		this.preencherMapa();		
+		this.ligarTerritorios();
 	}
 	
 	public boolean ehVizinho(Vertice origem, Vertice dest) {
@@ -126,6 +127,178 @@ public class Mapa implements Grafo {
 		this.continentes.add(oceania);
 	}
 	
+	private void ligarTerritorios(){
+		//america do sul
+		Territorio brasil = this.obterTerritorio("BRAZIL");
+		Territorio argentina = this.obterTerritorio("ARGENTINA");
+		Territorio colombia = this.obterTerritorio("COLOMBIA");
+		Territorio chile = this.obterTerritorio("CHILE");
+		
+		//africa
+		Territorio argelia = this.obterTerritorio("ARGÉLIA");
+		Territorio sudao = this.obterTerritorio("SUDÃO");
+		Territorio egito = this.obterTerritorio("EGITO");
+		Territorio africaSul = this.obterTerritorio("ÁFRICA DO SUL");
+		Territorio congo = this.obterTerritorio("CONGO");
+		Territorio madagascar = this.obterTerritorio("MADAGASCAR");
+		
+		//america do norte
+		Territorio mexico = this.obterTerritorio("MÉXICO");
+		Territorio novaYork = this.obterTerritorio("NOVA YORK");
+		Territorio california = this.obterTerritorio("CALIFORNIA");
+		Territorio ottawa = this.obterTerritorio("OTTAWA");
+		Territorio vancouver = this.obterTerritorio("VANCOUVER");
+		Territorio labrador = this.obterTerritorio("LABRADOR");
+		Territorio mackenzie = this.obterTerritorio("MACKENZIE");
+		Territorio alaska = this.obterTerritorio("ALASKA");
+		Territorio groenlandia = this.obterTerritorio("GROENLÂNDIA");
+		
+		
+		//europa
+		Territorio portugal = this.obterTerritorio("PORTUGAL");
+		Territorio polonia = this.obterTerritorio("POLÔNIA");
+		Territorio alemanha = this.obterTerritorio("ALEMANHA");
+		Territorio inglaterra = this.obterTerritorio("INGLATERRA");
+		Territorio islandia = this.obterTerritorio("ISLÂNIDA");
+		Territorio suecia = this.obterTerritorio("SUÉCIA");
+		Territorio moscou = this.obterTerritorio("MOSCOU");
+		
+		//asia
+		Territorio oriente = this.obterTerritorio("ORIENTE");
+		Territorio aral = this.obterTerritorio("ARAL");
+		Territorio omsk = this.obterTerritorio("OMSK");
+		Territorio dudinka = this.obterTerritorio("DUDINKA");
+		Territorio siberia = this.obterTerritorio("SIBÉRIA");
+		Territorio tchita = this.obterTerritorio("TCHITA");
+		Territorio china = this.obterTerritorio("CHINA");
+		Territorio mogolia = this.obterTerritorio("MONGÓLIA");
+		Territorio india = this.obterTerritorio("ÍNDIA");
+		Territorio vietna = this.obterTerritorio("VIETNÃ");
+		Territorio vladivostok = this.obterTerritorio("VLADIVOSTOK");
+		Territorio japao = this.obterTerritorio("JAPÃO");
+		
+		ArestaTerritorio aresta = new ArestaTerritorio(brasil, argentina);
+		this.insert(aresta);
+		
+		//america sul
+		aresta = new ArestaTerritorio(brasil, colombia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(brasil, chile);
+		this.insert(aresta);
+		
+		//america -> africa	
+		aresta = new ArestaTerritorio(brasil, argelia);
+		this.insert(aresta);
+		
+		//america sul -> america norte
+		aresta = new ArestaTerritorio(colombia, mexico);
+		this.insert(aresta);
+		
+		//america norte
+		aresta = new ArestaTerritorio(mexico, novaYork);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(mexico, california);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(california, novaYork);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(california, vancouver);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(ottawa, novaYork);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(ottawa, labrador);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(labrador, groenlandia);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(labrador, novaYork);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(groenlandia, mackenzie);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(alaska, mackenzie);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(vancouver, mackenzie);
+		this.insert(aresta);	
+		
+		aresta = new ArestaTerritorio(vancouver, ottawa);
+		this.insert(aresta);
+		
+		//america norte -> europa
+		aresta = new ArestaTerritorio(groenlandia, islandia);
+		this.insert(aresta);
+		
+		//europa
+		aresta = new ArestaTerritorio(inglaterra, islandia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(islandia, suecia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(moscou, suecia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(moscou, polonia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(alemanha, polonia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(portugal, polonia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(portugal, inglaterra);
+		this.insert(aresta);
+		
+		//europa ->  africa
+		aresta = new ArestaTerritorio(portugal, argelia);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(portugal, egito);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(polonia, egito);
+		this.insert(aresta);
+		
+		//africa
+		aresta = new ArestaTerritorio(argelia, egito);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(argelia, sudao);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(argelia, congo);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(sudao, egito);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(sudao, congo);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(sudao, africaSul);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(sudao, madagascar);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(congo, africaSul);
+		this.insert(aresta);
+		
+		aresta = new ArestaTerritorio(madagascar, africaSul);
+		this.insert(aresta);
+		
+		//TODO: o resto!!
+	
+	}
 	
 	@Override
 	public int numeroV() {
@@ -159,6 +332,26 @@ public class Mapa implements Grafo {
 		}
 		
 		return retorno.iterator();
+		
+	}
+	
+	public Territorio obterTerritorio(String nomeTerritorio) 
+	{
+		Territorio territorioComp  = new Territorio(123, nomeTerritorio);
+		Territorio atual = null;
+		for (Continente c : this.continentes) 
+		{
+			Iterator<Territorio> territoriosContinente = c.obterTerritorios();
+			
+			while(territoriosContinente.hasNext())
+			{
+				atual = territoriosContinente.next();
+				if(atual.equals(territorioComp))
+					return atual;
+			}
+		}
+		
+		return null;
 		
 	}	
 	 
