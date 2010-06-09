@@ -1,6 +1,7 @@
 package br.upe.war.comunicacao.mensagens;
 
 import br.upe.war.negocio.comum.FachadaWar;
+import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 
 public class MensagemCriarSalaJogo extends Mensagem 
@@ -45,16 +46,16 @@ public class MensagemCriarSalaJogo extends Mensagem
 	}
 
 	@Override
-	public void tratarMensagem() 
+	public void tratarMensagem() throws WarValidationException 
 	{
 		FachadaWar fachada = FachadaWar.getInstance();
 		
 		ParametrosCriarSalaJogo parametros = null;
 		
 		if(!protegida)
-			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala, protegida, numeroJogadores);
+			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala,  numeroJogadores);
 		else
-			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala, protegida, senha, numeroJogadores);
+			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala, senha, numeroJogadores);
 		
 		fachada.criarSalaJogo(parametros);
 	}
