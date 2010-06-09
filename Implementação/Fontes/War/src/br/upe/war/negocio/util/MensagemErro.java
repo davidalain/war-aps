@@ -32,4 +32,12 @@ public class MensagemErro
 	public static final String JOGADOR_DEVE_SER_ATACANTE = "O jogador deve ser o dominante do território atacante";
 
 	public static final String ATAQUE_EXERCITOS_INCORRETOS = "O número de exércitos para atacar deve ser maior que zero e menor ou igual a três";
+
+	public static final String JOGADOR_VAZIO = "O jogador deve ser informado";
+
+	public static final String COR_NAO_EXISTENTE = "A cor escolhida não existe";
+
+	public static final String SALA_JOGO_NOME_VAZIO = "O nome da sala de jogo deve ser informada";
+
+	public static final String NUMERO_JOGADORES_INVALIDO = "O número de jogadores é inválido";
 }

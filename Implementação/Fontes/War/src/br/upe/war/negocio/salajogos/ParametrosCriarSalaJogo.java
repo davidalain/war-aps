@@ -1,36 +1,35 @@
 package br.upe.war.negocio.salajogos;
 
+import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
 
 
 public class ParametrosCriarSalaJogo 
 {
 	private Jogador jogador;
-	
-	private boolean restrita;
-	
+		
 	private String senha;
 	
-	public ParametrosCriarSalaJogo(String apelido, int cor,  String nomeSala, boolean restrita,
-			String senha, int numeroJogadores) {
+	private String nomeSala;
+	
+	private int numeroJogadores;
+	
+	public ParametrosCriarSalaJogo(String apelido, int cor,  String nomeSala, String senha, int numeroJogadores) throws WarValidationException {
 		this.jogador = new Jogador(apelido, cor);
-		this.restrita = restrita;
 		this.senha = senha;
 		this.nomeSala = nomeSala;
 		this.numeroJogadores = numeroJogadores;
 	}
 	
-	public ParametrosCriarSalaJogo(String apelido, int cor,  String nomeSala, boolean restrita,
-			int numeroJogadores) {
-		this.jogador = new Jogador(apelido, cor);
-		this.restrita = restrita;
+	public ParametrosCriarSalaJogo(String apelido, int cor,  String nomeSala,
+			int numeroJogadores) throws WarValidationException {
+		this.jogador = new Jogador(apelido, cor);	
 		this.nomeSala = nomeSala;
 		this.numeroJogadores = numeroJogadores;
+		this.senha = null;
 	}
 
-	private String nomeSala;
 	
-	private int numeroJogadores;
 
 	public Jogador getJogador() {
 		return jogador;
@@ -64,13 +63,5 @@ public class ParametrosCriarSalaJogo
 		this.numeroJogadores = numeroJogadores;
 	}
 
-	public boolean isRestrita() {
-		return restrita;
-	}
-
-	public void setRestrita(boolean restrita) {
-		this.restrita = restrita;
-	}
-	
 	
 }

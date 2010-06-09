@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.util.MensagemErro;
@@ -17,10 +18,24 @@ public class SalaJogo
 	
 	private String senha;
 	
+	private String nomeSala;
+	
+	private int numeroJogadores;
+	
 	public SalaJogo(ParametrosCriarSalaJogo parametros)
 	{
+		
+		WarValidationException wve = new WarValidationException();
+		
+		wve.comparar(false, parametros.getJogador() == null, MensagemErro.JOGADOR_VAZIO);
+		wve.<String>compararDiferentes("", parametros.getNomeSala(), MensagemErro.SALA_JOGO_NOME_VAZIO);
+		wve.comparar(true, parametros.getNumeroJogadores() <= 6 && parametros.getNumeroJogadores() >= 3, MensagemErro.NUMERO_JOGADORES_INVALIDO);
+		
 		this.jogadores = new ArrayList<Jogador>();
 		this.jogadores.add(parametros.getJogador());
+		
+		
+		
 		
 		if(parametros.getSenha() != null)
 		{

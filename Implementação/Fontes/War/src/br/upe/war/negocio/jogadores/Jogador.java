@@ -1,8 +1,10 @@
 package br.upe.war.negocio.jogadores;
 
 import br.upe.war.negocio.cartas.Carta;
+import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.objetivos.Objetivo;
+import br.upe.war.negocio.util.MensagemErro;
 
 
 public class Jogador 
@@ -27,8 +29,14 @@ public class Jogador
 		this.login = login;
 	}
 
-	public Jogador(String login, int cor) {
-		super();
+	public Jogador(String login, int cor) throws WarValidationException {
+		WarValidationException wve = new WarValidationException();
+		
+		wve.<String>compararDiferentes("", login, MensagemErro.JOGADOR_VAZIO);
+		wve.comparar(true, cor > 0 && cor < 7, MensagemErro.COR_NAO_EXISTENTE);
+		
+		wve.validar();
+		
 		this.login = login;
 		this.cor = cor;
 	}
