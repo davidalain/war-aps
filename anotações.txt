@@ -1,4 +1,4 @@
-- Criar arestas do mapa
+- Criar arestas do mapa*
 - Adiantar criação da sala de jogo e do jogo usando a comunicação entre cliente e servidor.
 
 
