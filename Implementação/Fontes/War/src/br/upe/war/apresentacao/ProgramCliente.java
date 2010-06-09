@@ -16,12 +16,10 @@ public class ProgramCliente {
 	{
 		ControladorComunicacao comunicao = ControladorComunicacao.getInstance();
 		
-		
-			MensagemCriarSalaJogo m = new MensagemCriarSalaJogo();
-			m.setEndereco("127.0.0.1");
+		MensagemCriarSalaJogo m = new MensagemCriarSalaJogo("Erick", 1, "sala1", false, 3);
+		m.setEndereco("127.0.0.1");
 			
-			while(true)
-				comunicao.enviarMensagem(m);
+		comunicao.enviarMensagem(m);
 		
 	}
 
