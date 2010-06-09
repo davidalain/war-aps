@@ -6,7 +6,6 @@ import java.util.Iterator;
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
-import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.util.MensagemErro;
 
 public class ControladorSalaJogo 
@@ -39,7 +38,7 @@ public class ControladorSalaJogo
 
 	public void criarSalaJogo(ParametrosCriarSalaJogo parametros) 
 	{
-
+		
 		SalaJogo novaSalaJogo = new SalaJogo(parametros);
 		
 		this.salasJogo.add(novaSalaJogo);
