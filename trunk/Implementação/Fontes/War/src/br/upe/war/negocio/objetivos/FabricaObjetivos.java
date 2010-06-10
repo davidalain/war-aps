@@ -36,7 +36,7 @@ public class FabricaObjetivos {
 		
 	}
 	
-	public static ArrayList<Objetivo> getPossiveisObjetivos( ArrayList<Jogador> jogadores) {	
+	public  ArrayList<Objetivo> getPossiveisObjetivos( ArrayList<Jogador> jogadores) {	
 		if(jogadores.size() == 6)
 			return listaCompleta;
 		else{
@@ -64,11 +64,12 @@ public class FabricaObjetivos {
 				
 				retorno.add(o);
 			}
+			return retorno;
 			
 		}
 		
 		
-		return null;
+		
 	}
 	
 	

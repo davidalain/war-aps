@@ -15,7 +15,7 @@ public class SalaJogo
 	private Jogo jogo;
 	
 	private ArrayList<Jogador> jogadores;
-	
+		
 	private String senha;
 	
 	private String nomeSala;
@@ -33,7 +33,7 @@ public class SalaJogo
 		wve.comparar(false, parametros.getNomeSala() == null, MensagemErro.SALA_JOGO_NULL);
 		wve.validar();
 		
-		this.jogadores = new ArrayList<Jogador>();
+		this.jogadores = new ArrayList<Jogador>(6);
 		this.jogadores.add(parametros.getJogador());
 		this.nomeSala = parametros.getNomeSala();
 		this.numeroJogadores = parametros.getNumeroJogadores();
@@ -108,6 +108,10 @@ public class SalaJogo
 
 	public void setJogo(Jogo jogo) {
 		this.jogo = jogo;
+	}
+	
+	public Jogador getCriador() {
+		return this.jogadores.get(0);
 	}
 
 	public ArrayList<Jogador> getJogadores() {

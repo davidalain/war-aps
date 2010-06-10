@@ -16,8 +16,6 @@ import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
 public class Jogo {
-	private String nomeJogo;
-	private ArrayList<Objetivo> possiveisObjetivos;
 	private ArrayList<Jogador> jogadores;
 	private ArrayList<Carta> cartas;
 	private Jogada jogadaAtual;
@@ -28,7 +26,6 @@ public class Jogo {
 		this.jogadores = new ArrayList<Jogador>();
 		this.mapa = new Mapa();
 		
-		this.possiveisObjetivos = FabricaObjetivos.getPossiveisObjetivos(this.jogadores);
 	}
 	
 	public void addJogador(Jogador jogador)
@@ -36,21 +33,6 @@ public class Jogo {
 		this.jogadores.add(jogador);
 	}
 	
-	
-
-	public String getNomeJogo() 
-	{
-		return nomeJogo;
-	}
-
-
-
-	public void setNomeJogo(String nomeJogo) {
-		this.nomeJogo = nomeJogo;
-	}
-
-
-
 	public void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
 	{
 		if(!jogadorEstaNoJogo(parametros.getJogador()))
@@ -77,16 +59,6 @@ public class Jogo {
 		return encontrou;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if(obj instanceof Jogo)
-		{
-			Jogo jogo = (Jogo)obj;
-			return this.nomeJogo.equals(jogo.nomeJogo);
-		}
-		return false;
-	}
-
 	public void distribuirTerritorios() 
 	{
 		Iterator<Territorio> territorios = this.mapa.obterTerritorios();
@@ -99,6 +71,7 @@ public class Jogo {
 			Jogador jogador = this.jogadores.get(i);
 			
 			territorio.setDominante(jogador);
+			territorio.addExercito(1);
 			
 			if(i == this.jogadores.size() - 1)
 			{
@@ -112,18 +85,20 @@ public class Jogo {
 	}
 
 	public void distribuirObjetivos() {
+		FabricaObjetivos fabrica = FabricaObjetivos.getInstance();
+		ArrayList<Objetivo> possiveisObjetivos = fabrica.getPossiveisObjetivos(this.jogadores);
 		Objetivo o = null;
 		ArrayList<Objetivo> usados = new ArrayList<Objetivo>();
-		int i = new Random().nextInt(14);
+		int i = new Random().nextInt(14-this.jogadores.size());
 		for(Jogador j : jogadores){
-			o = this.possiveisObjetivos.get(i);
+			o = possiveisObjetivos.get(i);
 			
 			if(!usados.contains(o)){
 				usados.add(o);
 				j.setObjetivo(o);
 			}
 			
-			if(i == 14)
+			if(i == 13-this.jogadores.size())
 				i = 0;
 			else
 				i++;
