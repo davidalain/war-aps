@@ -6,4 +6,5 @@ import br.upe.war.negocio.jogos.Jogo;
 public abstract class Objetivo {
 
 	public abstract boolean atingido(Jogador jogador, Jogo jogo);
+	
 }
