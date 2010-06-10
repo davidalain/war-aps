@@ -25,8 +25,8 @@ public class MensagemCriarSalaJogo extends Mensagem
 	private int numeroJogadores;
 	
 	public MensagemCriarSalaJogo(String apelido, int cor, String nomeSala,
-			boolean protegida, String senha,  int numeroJogadores) {
-		super();
+			boolean protegida, String senha,  int numeroJogadores, String enderecoDestino) {
+		super(enderecoDestino);
 		this.apelido = apelido;
 		this.cor = cor;
 		this.nomeSala = nomeSala;
@@ -36,8 +36,8 @@ public class MensagemCriarSalaJogo extends Mensagem
 	}
 	
 	public MensagemCriarSalaJogo(String apelido, int cor, String nomeSala,
-			boolean protegida, int numeroJogadores) {
-		super();
+			boolean protegida, int numeroJogadores, String enderecoDestino) {
+		super(enderecoDestino);
 		this.apelido = apelido;
 		this.cor = cor;
 		this.nomeSala = nomeSala;

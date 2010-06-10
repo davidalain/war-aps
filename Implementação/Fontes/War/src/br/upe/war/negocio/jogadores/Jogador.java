@@ -24,11 +24,6 @@ public class Jogador
 	
 	private Objetivo objetivo;
 	
-	public Jogador(String login)
-	{
-		this.login = login;
-	}
-
 	public Jogador(String login, int cor) throws WarValidationException {
 		WarValidationException wve = new WarValidationException();
 		

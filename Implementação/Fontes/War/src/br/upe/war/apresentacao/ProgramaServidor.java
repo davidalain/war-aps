@@ -14,10 +14,10 @@ public class ProgramaServidor
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException 
 	{
+		ServerSocket socket = new ServerSocket(6789);
+		
 		while(true)
-		{
-			ServerSocket socket = new ServerSocket(6789);
-			
+		{			
 			Socket connectionSocket = socket.accept();
 			
 			ObjectInputStream input = new ObjectInputStream(connectionSocket.getInputStream());

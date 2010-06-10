@@ -40,4 +40,6 @@ public class MensagemErro
 	public static final String SALA_JOGO_NOME_VAZIO = "O nome da sala de jogo deve ser informada";
 
 	public static final String NUMERO_JOGADORES_INVALIDO = "O número de jogadores é inválido";
+
+	public static final String SALA_JOGO_NULL = "A sala do jogo esta nula";
 }
