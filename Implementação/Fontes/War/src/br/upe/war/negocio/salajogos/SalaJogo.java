@@ -59,14 +59,11 @@ public class SalaJogo
 	}
 
 	public void iniciarJogo() throws WarException 
-	{
-		
+	{		
 		validarNumeroJogares();
 		
 		criarJogo();
 		
-		
-
 	}
 
 	private void criarJogo() 
@@ -78,6 +75,7 @@ public class SalaJogo
 			this.jogo.addJogador(j);
 		}
 		
+		this.jogo.distribuirObjetivos();
 		this.jogo.distribuirTerritorios();
 	}
 

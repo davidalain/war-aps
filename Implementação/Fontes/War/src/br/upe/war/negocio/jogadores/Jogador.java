@@ -24,6 +24,14 @@ public class Jogador
 	
 	private Objetivo objetivo;
 	
+	public Objetivo getObjetivo() {
+		return objetivo;
+	}
+
+	public void setObjetivo(Objetivo objetivo) {
+		this.objetivo = objetivo;
+	}
+
 	public Jogador(String login, int cor) throws WarValidationException {
 		WarValidationException wve = new WarValidationException();
 		
