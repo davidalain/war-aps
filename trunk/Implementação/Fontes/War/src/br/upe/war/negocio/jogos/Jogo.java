@@ -2,14 +2,15 @@ package br.upe.war.negocio.jogos;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.cartas.Carta;
 import br.upe.war.negocio.excecoes.WarException;
-import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadas.Jogada;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.mapas.Mapa;
+import br.upe.war.negocio.objetivos.FabricaObjetivos;
 import br.upe.war.negocio.objetivos.Objetivo;
 import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
@@ -26,6 +27,8 @@ public class Jogo {
 	{
 		this.jogadores = new ArrayList<Jogador>();
 		this.mapa = new Mapa();
+		
+		this.possiveisObjetivos = FabricaObjetivos.getPossiveisObjetivos(this.jogadores);
 	}
 	
 	public void addJogador(Jogador jogador)
@@ -106,6 +109,26 @@ public class Jogo {
 				i++;
 			}		
 		}
+	}
+
+	public void distribuirObjetivos() {
+		Objetivo o = null;
+		ArrayList<Objetivo> usados = new ArrayList<Objetivo>();
+		int i = new Random().nextInt(14);
+		for(Jogador j : jogadores){
+			o = this.possiveisObjetivos.get(i);
+			
+			if(!usados.contains(o)){
+				usados.add(o);
+				j.setObjetivo(o);
+			}
+			
+			if(i == 14)
+				i = 0;
+			else
+				i++;
+		}
+		
 	}
 	
 }
