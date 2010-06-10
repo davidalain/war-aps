@@ -68,12 +68,16 @@ public class ControladorSalaJogo
 		
 	}
 	
-	public void iniciarJogo(SalaJogo salaJogo) throws WarException
+	public void iniciarJogo(String nomeSalaJogo, String loginJogador) throws WarException
 	{
+		SalaJogo s = this.getSala(nomeSalaJogo);
+		Jogador criador = s.getCriador();
 		
-		
-		salaJogo.iniciarJogo();	
-		
+		if(criador.getLogin().equals(loginJogador))
+			s.iniciarJogo();
+		else
+			new WarException(MensagemErro.JOGADOR_NAO_CRIADOR);
+			
 	}
 	
 	public void removerTodas() 

@@ -34,6 +34,7 @@ public class Mapa implements Grafo {
 	
 		int numTerritorios = obterNumeroTerritorios();		
 		vertices = new int[numTerritorios][numTerritorios];
+		this.continentes = new ArrayList<Continente>(6);
 		this.preencherMapa();		
 		this.ligarTerritorios();
 	}
@@ -129,53 +130,53 @@ public class Mapa implements Grafo {
 	
 	private void ligarTerritorios(){
 		//america do sul
-		Territorio brasil = this.obterTerritorio("BRAZIL");
-		Territorio argentina = this.obterTerritorio("ARGENTINA");
-		Territorio colombia = this.obterTerritorio("COLOMBIA");
-		Territorio chile = this.obterTerritorio("CHILE");
+		Territorio brasil = this.obterTerritorio(1);
+		Territorio argentina = this.obterTerritorio(3);
+		Territorio colombia = this.obterTerritorio(4);
+		Territorio chile = this.obterTerritorio(2);
 		
 		//africa
-		Territorio argelia = this.obterTerritorio("ARGÉLIA");
-		Territorio sudao = this.obterTerritorio("SUDÃO");
-		Territorio egito = this.obterTerritorio("EGITO");
-		Territorio africaSul = this.obterTerritorio("ÁFRICA DO SUL");
-		Territorio congo = this.obterTerritorio("CONGO");
-		Territorio madagascar = this.obterTerritorio("MADAGASCAR");
+		Territorio argelia = this.obterTerritorio(18);
+		Territorio sudao = this.obterTerritorio(17);
+		Territorio egito = this.obterTerritorio(19);
+		Territorio africaSul = this.obterTerritorio(14);
+		Territorio congo = this.obterTerritorio(16);
+		Territorio madagascar = this.obterTerritorio(15);
 		
 		//america do norte
-		Territorio mexico = this.obterTerritorio("MÉXICO");
-		Territorio novaYork = this.obterTerritorio("NOVA YORK");
-		Territorio california = this.obterTerritorio("CALIFORNIA");
-		Territorio ottawa = this.obterTerritorio("OTTAWA");
-		Territorio vancouver = this.obterTerritorio("VANCOUVER");
-		Territorio labrador = this.obterTerritorio("LABRADOR");
-		Territorio mackenzie = this.obterTerritorio("MACKENZIE");
-		Territorio alaska = this.obterTerritorio("ALASKA");
-		Territorio groenlandia = this.obterTerritorio("GROENLÂNDIA");
+		Territorio mexico = this.obterTerritorio(5);
+		Territorio novaYork = this.obterTerritorio(6);
+		Territorio california = this.obterTerritorio(7);
+		Territorio ottawa = this.obterTerritorio(9);
+		Territorio vancouver = this.obterTerritorio(8);
+		Territorio labrador = this.obterTerritorio(10);
+		Territorio mackenzie = this.obterTerritorio(11);
+		Territorio alaska = this.obterTerritorio(12);
+		Territorio groenlandia = this.obterTerritorio(13);
 		
 		
 		//europa
-		Territorio portugal = this.obterTerritorio("PORTUGAL");
-		Territorio polonia = this.obterTerritorio("POLÔNIA");
-		Territorio alemanha = this.obterTerritorio("ALEMANHA");
-		Territorio inglaterra = this.obterTerritorio("INGLATERRA");
-		Territorio islandia = this.obterTerritorio("ISLÂNIDA");
-		Territorio suecia = this.obterTerritorio("SUÉCIA");
-		Territorio moscou = this.obterTerritorio("MOSCOU");
+		Territorio portugal = this.obterTerritorio(20);
+		Territorio polonia = this.obterTerritorio(21);
+		Territorio alemanha = this.obterTerritorio(22);
+		Territorio inglaterra = this.obterTerritorio(23);
+		Territorio islandia = this.obterTerritorio(24);
+		Territorio suecia = this.obterTerritorio(25);
+		Territorio moscou = this.obterTerritorio(26);
 		
 		//asia
-		Territorio oriente = this.obterTerritorio("ORIENTE");
-		Territorio aral = this.obterTerritorio("ARAL");
-		Territorio omsk = this.obterTerritorio("OMSK");
-		Territorio dudinka = this.obterTerritorio("DUDINKA");
-		Territorio siberia = this.obterTerritorio("SIBÉRIA");
-		Territorio tchita = this.obterTerritorio("TCHITA");
-		Territorio china = this.obterTerritorio("CHINA");
-		Territorio mogolia = this.obterTerritorio("MONGÓLIA");
-		Territorio india = this.obterTerritorio("ÍNDIA");
-		Territorio vietna = this.obterTerritorio("VIETNÃ");
-		Territorio vladivostok = this.obterTerritorio("VLADIVOSTOK");
-		Territorio japao = this.obterTerritorio("JAPÃO");
+		Territorio oriente = this.obterTerritorio(27);
+		Territorio aral = this.obterTerritorio(28);
+		Territorio omsk = this.obterTerritorio(29);
+		Territorio dudinka = this.obterTerritorio(30);
+		Territorio siberia = this.obterTerritorio(31);
+		Territorio tchita = this.obterTerritorio(32);
+		Territorio china = this.obterTerritorio(34);
+		Territorio mogolia = this.obterTerritorio(33);
+		Territorio india = this.obterTerritorio(35);
+		Territorio vietna = this.obterTerritorio(36);
+		Territorio vladivostok = this.obterTerritorio(37);
+		Territorio japao = this.obterTerritorio(38);
 		
 		ArestaTerritorio aresta = new ArestaTerritorio(brasil, argentina);
 		this.insert(aresta);
@@ -335,9 +336,9 @@ public class Mapa implements Grafo {
 		
 	}
 	
-	public Territorio obterTerritorio(String nomeTerritorio) 
+	public Territorio obterTerritorio(int idTerritorio) 
 	{
-		Territorio territorioComp  = new Territorio(123, nomeTerritorio);
+		Territorio territorioComp  = new Territorio(idTerritorio, "");
 		Territorio atual = null;
 		for (Continente c : this.continentes) 
 		{

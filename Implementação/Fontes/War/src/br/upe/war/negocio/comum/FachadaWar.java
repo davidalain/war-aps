@@ -44,9 +44,9 @@ public class FachadaWar
 		this.salasJogos.entrarSalaJogo(jogador, nomeSalaJogo);
 	}
 
-	public void iniciarJogo(SalaJogo salaJogo) throws WarException
+	public void iniciarJogo(String nomeSalaJogo, String loginJogador) throws WarException
 	{
-		this.salasJogos.iniciarJogo(salaJogo);
+		this.salasJogos.iniciarJogo(nomeSalaJogo, loginJogador);
 	}
 
 	public int obterSalasJogoCount() {

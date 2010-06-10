@@ -42,4 +42,6 @@ public class MensagemErro
 	public static final String NUMERO_JOGADORES_INVALIDO = "O número de jogadores é inválido";
 
 	public static final String SALA_JOGO_NULL = "A sala do jogo esta nula";
+
+	public static final String JOGADOR_NAO_CRIADOR = "Jogador não é o criador da sala";
 }
