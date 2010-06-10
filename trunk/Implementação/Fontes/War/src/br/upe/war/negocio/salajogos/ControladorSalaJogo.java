@@ -3,9 +3,10 @@ package br.upe.war.negocio.salajogos;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.excecoes.WarValidationException;
+import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.util.MensagemErro;
 
 public class ControladorSalaJogo 
@@ -13,13 +14,10 @@ public class ControladorSalaJogo
 	private static ControladorSalaJogo instance;
 	
 	private ArrayList<SalaJogo> salasJogo;
-	
-	private ControladorComunicacao comunicacao;
-	
+		
 	private ControladorSalaJogo()
 	{
 		this.salasJogo = new ArrayList<SalaJogo>();
-		this.comunicacao = ControladorComunicacao.getInstance();
 	}
 	
 	public synchronized static ControladorSalaJogo getInstance()
@@ -36,7 +34,7 @@ public class ControladorSalaJogo
 		return this.salasJogo.size();
 	}
 
-	public void criarSalaJogo(ParametrosCriarSalaJogo parametros) 
+	public void criarSalaJogo(ParametrosCriarSalaJogo parametros) throws WarValidationException 
 	{
 		
 		SalaJogo novaSalaJogo = new SalaJogo(parametros);
@@ -81,6 +79,21 @@ public class ControladorSalaJogo
 	public void removerTodas() 
 	{
 		this.salasJogo.clear();
+	}
+
+	public void entrarSalaJogo(Jogador jogador, String nomeSalaJogo) {
+		SalaJogo sala = this.getSala(nomeSalaJogo);
+		sala.addJogador(jogador);
+		
+	}
+
+	public SalaJogo getSala(String nomeSalaJogo) {
+
+		for(SalaJogo s : this.salasJogo){
+			if(s.getNomeSala().equals(nomeSalaJogo))
+				return s;
+		}
+		return null;
 	}
 
 }

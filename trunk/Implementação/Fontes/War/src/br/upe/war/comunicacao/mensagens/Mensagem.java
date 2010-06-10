@@ -9,6 +9,11 @@ public abstract class Mensagem implements Serializable
 {
 	private String endereco;
 
+	public Mensagem(String endereco) {
+		super();
+		this.endereco = endereco;
+	}
+
 	/**
 	 * 
 	 */
