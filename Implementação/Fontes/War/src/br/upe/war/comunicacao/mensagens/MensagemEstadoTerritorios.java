@@ -43,7 +43,7 @@ public class MensagemEstadoTerritorios extends Mensagem {
 			
 			this.retorno += i + " " + atual.getNome() + " ";
 			this.retorno += "é dominado por " + atual.getDominante().getLogin();
-			this.retorno += "com " + atual.getQuantidadeExercito() + " exercitos.";
+			this.retorno += " com " + atual.getQuantidadeExercito() + " exercito(s).";
 			this.retorno += "\n";
 			
 			i++;
