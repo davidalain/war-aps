@@ -20,6 +20,8 @@ public abstract class Mensagem implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	public abstract void tratarMensagem() throws WarException, IOException;
+	
+	public abstract String resposta();
 
 	public String getEndereco() {
 		return endereco;

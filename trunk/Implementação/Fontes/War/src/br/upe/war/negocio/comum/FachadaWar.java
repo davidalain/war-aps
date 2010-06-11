@@ -38,6 +38,7 @@ public class FachadaWar
 	public void criarSalaJogo(ParametrosCriarSalaJogo parametros) throws WarValidationException
 	{
 		this.salasJogos.criarSalaJogo(parametros);
+		
 	}
 	
 	public void entrarSalaJogo(Jogador jogador, String nomeSalaJogo){

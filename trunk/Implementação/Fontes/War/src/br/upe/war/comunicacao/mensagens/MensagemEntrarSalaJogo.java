@@ -2,6 +2,7 @@ package br.upe.war.comunicacao.mensagens;
 
 import java.io.IOException;
 
+import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.jogadores.Jogador;
@@ -33,6 +34,14 @@ public class MensagemEntrarSalaJogo extends Mensagem {
 		Jogador jogador = new Jogador(this.apelido, this.cor);
 		
 		fachada.entrarSalaJogo(jogador, nomeSalaJogo);
+		
+		ControladorComunicacao com = ControladorComunicacao.getInstance();
+		
+		com.enviarMensagemResposta(this);
+	}
+	
+	public String resposta(){
+		return this.apelido + " entrou na sala : " + this.nomeSalaJogo;
 	}
 
 }

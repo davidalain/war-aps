@@ -18,5 +18,11 @@ public class MensagemEscolherCorTerritorio extends Mensagem
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String resposta() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

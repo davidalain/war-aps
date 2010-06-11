@@ -2,6 +2,7 @@ package br.upe.war.comunicacao.mensagens;
 
 import java.io.IOException;
 
+import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.excecoes.WarException;
 
 public class MensagemChat extends Mensagem {
@@ -24,8 +25,8 @@ public class MensagemChat extends Mensagem {
 
 	@Override
 	public void tratarMensagem() throws WarException, IOException {
-		// TODO Auto-generated method stub
-
+		ControladorComunicacao com = ControladorComunicacao.getInstance();
+		com.enviarMensagemResposta(this);
 	}
 
 	public String getMensagem() {
@@ -42,6 +43,12 @@ public class MensagemChat extends Mensagem {
 
 	public void setApelido(String apelido) {
 		this.apelido = apelido;
+	}
+
+	@Override
+	public String resposta() {
+		// TODO Auto-generated method stub
+		return this.apelido + " : " + this.mensagem;
 	}
 
 }
