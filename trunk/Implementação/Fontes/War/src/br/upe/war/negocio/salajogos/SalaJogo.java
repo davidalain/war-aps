@@ -8,6 +8,7 @@ import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.jogos.Jogo;
+import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
 public class SalaJogo 
@@ -83,7 +84,7 @@ public class SalaJogo
 	 */
 	private void validarNumeroJogares() throws WarException 
 	{
-		if(this.jogadores.size() < 3)
+		if(this.jogadores.size() < 2)
 		{
 			throw new WarException(MensagemErro.NUMERO_JOGADORES_INSUFICIENTES);
 		}
@@ -152,6 +153,10 @@ public class SalaJogo
 		
 		this.jogadores.add(jogador);
 		
+	}
+
+	public Iterator<Territorio> obterTerritorios() {
+		return this.jogo.obterTerritorios();
 	}
 	
 	
