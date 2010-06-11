@@ -22,7 +22,7 @@ public class ProgramClienteCLI {
 	 * @throws IOException 
 	 */
 	private static ControladorComunicacao comunicacao = ControladorComunicacao.getInstance();
-	private static String servidor = "127.0.0.1";
+	private static String servidor = "192.168.1.1";
 	private static Jogador jogador = null;
 	private static String nomeSala = null;
 	
@@ -79,10 +79,10 @@ public class ProgramClienteCLI {
 	private static void imprimirMenu(){
 		System.out.println("*** MENU ***");
 		System.out.println("Digite a opcao desejada:");
-		//if(jogador == null){
+		if(jogador == null){
 			System.out.println("1 - Criar uma sala de jogo");
 			System.out.println("2 - Inserir um jogador em uma sala");
-		//}
+		}
 		System.out.println("3 - Enviar mensagem no chat");
 		if(nomeSala != null){
 			System.out.println("4 - Inicia Jodo da sala");
@@ -130,12 +130,12 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		Jogador jogador2 = new Jogador(login, cor);
+		jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		nomeSala = reader.readLine();
 		
-		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador2, nomeSala, servidor);
+		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador, nomeSala, servidor);
 		enviar(m);
 
 	}
