@@ -21,6 +21,7 @@ public class ProgramClienteCLI {
 	 */
 	private static ControladorComunicacao comunicacao = ControladorComunicacao.getInstance();
 	private static String servidor = "192.168.1.1";
+	private static Jogador jogador = null;
 	
 	public static void main(String[] args) throws IOException, WarValidationException 
 	{
@@ -68,8 +69,10 @@ public class ProgramClienteCLI {
 	private static void imprimirMenu(){
 		System.out.println("*** MENU ***");
 		System.out.println("Digite a opcao desejada:");
-		System.out.println("1 - Criar uma sala de jogo");
-		System.out.println("2 - Inserir um jogador em uma sala");
+		if(jogador == null){
+			System.out.println("1 - Criar uma sala de jogo");
+			System.out.println("2 - Inserir um jogador em uma sala");
+		}
 		System.out.println("3 - Enviar mensagem no chat");
 		System.out.println("4 - SAIR");
 	}
@@ -85,7 +88,7 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		Jogador jogador = new Jogador(login, cor);
+		jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		String nomeSala = reader.readLine();
@@ -113,7 +116,7 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		Jogador jogador = new Jogador(login, cor);
+		jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		String nomeSala = reader.readLine();
