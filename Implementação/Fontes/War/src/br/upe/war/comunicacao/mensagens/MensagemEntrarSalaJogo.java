@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
 
 
@@ -15,25 +16,18 @@ public class MensagemEntrarSalaJogo extends Mensagem {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String apelido;
-	
-	private int cor;
-	
 	private String nomeSalaJogo;
 	
-	public MensagemEntrarSalaJogo(String apelido, int cor, String nomeSalaJogo, String ipDestino) {
-		super(ipDestino);
-		this.apelido = apelido;
-		this.cor = cor;
+	public MensagemEntrarSalaJogo(Jogador jogador, String nomeSalaJogo, String ipDestino) throws WarValidationException {
+		super(jogador, ipDestino);
 		this.nomeSalaJogo = nomeSalaJogo;
 	}
 
 	@Override
 	public void tratarMensagem() throws WarException, IOException {
 		FachadaWar fachada = FachadaWar.getInstance();
-		Jogador jogador = new Jogador(this.apelido, this.cor);
-		
-		fachada.entrarSalaJogo(jogador, nomeSalaJogo);
+	
+		fachada.entrarSalaJogo(super.getJogador(), nomeSalaJogo);
 		
 		ControladorComunicacao com = ControladorComunicacao.getInstance();
 		
@@ -41,7 +35,7 @@ public class MensagemEntrarSalaJogo extends Mensagem {
 	}
 	
 	public String resposta(){
-		return this.apelido + " entrou na sala : " + this.nomeSalaJogo;
+		return super.getJogador().getLogin() + " entrou na sala : " + this.nomeSalaJogo;
 	}
 
 }

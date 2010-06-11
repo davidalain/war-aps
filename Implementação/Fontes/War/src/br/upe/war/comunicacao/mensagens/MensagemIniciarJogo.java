@@ -5,15 +5,14 @@ import java.io.IOException;
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.jogadores.Jogador;
 
 public class MensagemIniciarJogo extends Mensagem 
 {
 	private String nomeSala;
-	private String loginJogador;
 	
-	public MensagemIniciarJogo(String nomeSala, String loginJogador, String endereco) {
-		super(endereco);
-		this.loginJogador = loginJogador;
+	public MensagemIniciarJogo(String nomeSala, Jogador jogador, String endereco) {
+		super(jogador, endereco);
 		this.nomeSala = nomeSala;
 	}
 
@@ -27,7 +26,7 @@ public class MensagemIniciarJogo extends Mensagem
 	{
 		FachadaWar fachada = FachadaWar.getInstance();
 		
-		fachada.iniciarJogo(this.nomeSala, this.loginJogador);
+		fachada.iniciarJogo(this.nomeSala, super.getJogador().getLogin());
 		
 
 		ControladorComunicacao com = ControladorComunicacao.getInstance();

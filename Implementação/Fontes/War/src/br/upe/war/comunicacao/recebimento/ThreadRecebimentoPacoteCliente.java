@@ -17,11 +17,11 @@ public class ThreadRecebimentoPacoteCliente extends ThreadRecebimentoPacote {
 		try {
 			while(true){
 				Socket connectionSocket = super.getSocket().accept();
-			
+							
 				ObjectInputStream input = new ObjectInputStream(connectionSocket.getInputStream());
 			
 				Mensagem mensagem = (Mensagem) input.readObject();
-			
+				
 				System.out.println(mensagem.resposta());
 			}
 		} catch (IOException e) {
