@@ -105,5 +105,9 @@ public class Jogo {
 		}
 		
 	}
+
+	public Iterator<Territorio> obterTerritorios() {
+		return this.mapa.obterTerritorios();
+	}
 	
 }

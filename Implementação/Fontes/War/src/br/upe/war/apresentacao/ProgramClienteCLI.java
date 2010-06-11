@@ -9,6 +9,7 @@ import br.upe.war.comunicacao.mensagens.Mensagem;
 import br.upe.war.comunicacao.mensagens.MensagemChat;
 import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
 import br.upe.war.comunicacao.mensagens.MensagemEntrarSalaJogo;
+import br.upe.war.comunicacao.mensagens.MensagemIniciarJogo;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacoteCliente;
 import br.upe.war.negocio.excecoes.WarValidationException;
@@ -20,8 +21,9 @@ public class ProgramClienteCLI {
 	 * @throws IOException 
 	 */
 	private static ControladorComunicacao comunicacao = ControladorComunicacao.getInstance();
-	private static String servidor = "192.168.1.1";
+	private static String servidor = "127.0.0.1";
 	private static Jogador jogador = null;
+	private static String nomeSala = null;
 	
 	public static void main(String[] args) throws IOException, WarValidationException 
 	{
@@ -50,6 +52,8 @@ public class ProgramClienteCLI {
 					mandarMensagemChat();
 					break;
 				case 4:
+					iniciarJogo();
+				case 5:
 					sair = true;
 					break;
 				default:
@@ -62,6 +66,7 @@ public class ProgramClienteCLI {
 
 	
 
+	
 	private static void enviar(Mensagem m) throws IOException{
 		comunicacao.enviarMensagem(m);
 	}
@@ -74,7 +79,9 @@ public class ProgramClienteCLI {
 			System.out.println("2 - Inserir um jogador em uma sala");
 		}
 		System.out.println("3 - Enviar mensagem no chat");
-		System.out.println("4 - SAIR");
+		if(nomeSala != null)
+			System.out.println("4 - Inicia Jodo da sala");
+		System.out.println("5 - SAIR");
 	}
 	
 	private static void criarSalaJogo() throws IOException, WarValidationException{
@@ -91,7 +98,7 @@ public class ProgramClienteCLI {
 		jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
-		String nomeSala = reader.readLine();
+		nomeSala = reader.readLine();
 		
 		System.out.println("Tem senha? [s/n]");
 		String op = reader.readLine();
@@ -119,7 +126,7 @@ public class ProgramClienteCLI {
 		jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
-		String nomeSala = reader.readLine();
+		nomeSala = reader.readLine();
 		
 		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador, nomeSala, servidor);
 		enviar(m);
@@ -128,18 +135,19 @@ public class ProgramClienteCLI {
 	
 	private static void mandarMensagemChat() throws IOException, WarValidationException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Digite o seu login: ");
-		String login = reader.readLine();
-		
+				
 		System.out.println("Digite a sua mensagem: ");
 		String mensagem = reader.readLine();
 		System.out.println("\n\n");
 		
-		Jogador jogador = new Jogador(login, 0);
-		
 		MensagemChat m = new MensagemChat(jogador, mensagem, servidor);
 		enviar(m);
 		
+	}
+	
+	private static void iniciarJogo() throws IOException {
+		MensagemIniciarJogo m = new MensagemIniciarJogo(nomeSala, jogador, servidor);
+		enviar(m);
 	}
 	
 	private static void imprimirCores() {

@@ -9,6 +9,7 @@ import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.salajogos.ControladorSalaJogo;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 import br.upe.war.negocio.salajogos.SalaJogo;
+import br.upe.war.negocio.territorios.Territorio;
 
 
 public class FachadaWar 
@@ -62,5 +63,9 @@ public class FachadaWar
 	public synchronized void reiniciar()
 	{
 		this.salasJogos.removerTodas();
+	}
+
+	public Iterator<Territorio> obterTerritorios(SalaJogo salaJogo) {
+		return this.salasJogos.obterTerritorios(salaJogo);
 	}
 }
