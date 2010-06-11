@@ -3,6 +3,7 @@ package br.upe.war.apresentacao;
 import java.io.IOException;
 
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
+import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacoteServidor;
 
 
 public class ProgramaServidor 
@@ -20,7 +21,7 @@ public class ProgramaServidor
 			
 			Mensagem mensagem = (Mensagem) input.readObject();*/
 			
-			ThreadRecebimentoPacote r = new ThreadRecebimentoPacote(null);
+			ThreadRecebimentoPacote r = new ThreadRecebimentoPacoteServidor(6789);
 			
 			Thread nova = new Thread(r);
 					

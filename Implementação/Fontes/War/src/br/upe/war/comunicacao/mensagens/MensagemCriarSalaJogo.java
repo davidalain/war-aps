@@ -1,5 +1,8 @@
 package br.upe.war.comunicacao.mensagens;
 
+import java.io.IOException;
+
+import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
@@ -46,7 +49,7 @@ public class MensagemCriarSalaJogo extends Mensagem
 	}
 
 	@Override
-	public void tratarMensagem() throws WarValidationException 
+	public void tratarMensagem() throws WarValidationException, IOException 
 	{
 		FachadaWar fachada = FachadaWar.getInstance();
 		
@@ -58,6 +61,13 @@ public class MensagemCriarSalaJogo extends Mensagem
 			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala, senha, numeroJogadores);
 		
 		fachada.criarSalaJogo(parametros);
+		
+		ControladorComunicacao com = ControladorComunicacao.getInstance();
+		com.enviarMensagemResposta(this);
+	}
+	
+	public String resposta(){
+		return this.apelido + " criou a sala : " + this.nomeSala;
 	}
 
 }
