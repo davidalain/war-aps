@@ -101,8 +101,8 @@ public class ControladorSalaJogo
 		return null;
 	}
 
-	public Iterator<Territorio> obterTerritorios(SalaJogo salaJogo) {
-		SalaJogo s = this.getSala(salaJogo.getNomeSala());
+	public Iterator<Territorio> obterTerritorios(String nomeSalaJogo) {
+		SalaJogo s = this.getSala(nomeSalaJogo);
 		return s.obterTerritorios();
 	}
 

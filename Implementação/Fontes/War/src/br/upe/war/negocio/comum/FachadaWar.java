@@ -65,7 +65,7 @@ public class FachadaWar
 		this.salasJogos.removerTodas();
 	}
 
-	public Iterator<Territorio> obterTerritorios(SalaJogo salaJogo) {
-		return this.salasJogos.obterTerritorios(salaJogo);
+	public Iterator<Territorio> obterTerritorios(String nomeSalaJogo) {
+		return this.salasJogos.obterTerritorios(nomeSalaJogo);
 	}
 }
