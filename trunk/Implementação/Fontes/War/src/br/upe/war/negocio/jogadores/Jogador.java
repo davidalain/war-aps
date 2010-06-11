@@ -1,5 +1,7 @@
 package br.upe.war.negocio.jogadores;
 
+import java.io.Serializable;
+
 import br.upe.war.negocio.cartas.Carta;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogos.Jogo;
@@ -7,8 +9,12 @@ import br.upe.war.negocio.objetivos.Objetivo;
 import br.upe.war.negocio.util.MensagemErro;
 
 
-public class Jogador 
+public class Jogador implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static int AZUL = 1;
 	public static int VERDE = 2;
 	public static int VERMELHO = 3;
@@ -36,7 +42,7 @@ public class Jogador
 		WarValidationException wve = new WarValidationException();
 		
 		wve.<String>compararDiferentes("", login, MensagemErro.JOGADOR_VAZIO);
-		wve.comparar(true, cor > 0 && cor < 7, MensagemErro.COR_NAO_EXISTENTE);
+		wve.comparar(true, cor >= 0 && cor < 7, MensagemErro.COR_NAO_EXISTENTE);
 		
 		wve.validar();
 		

@@ -38,8 +38,6 @@ public class SalaJogo
 		this.nomeSala = parametros.getNomeSala();
 		this.numeroJogadores = parametros.getNumeroJogadores();
 		
-		
-		
 		if(parametros.getSenha() != null)
 		{
 			this.senha = parametros.getSenha();
@@ -147,6 +145,11 @@ public class SalaJogo
 	}
 
 	public void addJogador(Jogador jogador) {
+		for(Jogador j : this.jogadores){
+			if(j.getLogin().equals(jogador.getLogin()))
+				new WarException(MensagemErro.JOGADOR_JA_CADASTRADO);
+		}
+		
 		this.jogadores.add(jogador);
 		
 	}

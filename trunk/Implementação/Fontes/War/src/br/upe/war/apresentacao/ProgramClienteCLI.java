@@ -11,6 +11,8 @@ import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
 import br.upe.war.comunicacao.mensagens.MensagemEntrarSalaJogo;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacoteCliente;
+import br.upe.war.negocio.excecoes.WarValidationException;
+import br.upe.war.negocio.jogadores.Jogador;
 
 public class ProgramClienteCLI {
 	/**
@@ -18,9 +20,9 @@ public class ProgramClienteCLI {
 	 * @throws IOException 
 	 */
 	private static ControladorComunicacao comunicacao = ControladorComunicacao.getInstance();
-	private static String servidor = "127.0.0.1";
+	private static String servidor = "192.168.1.1";
 	
-	public static void main(String[] args) throws IOException 
+	public static void main(String[] args) throws IOException, WarValidationException 
 	{
 		ThreadRecebimentoPacote r = new ThreadRecebimentoPacoteCliente(1234);
 		
@@ -72,7 +74,7 @@ public class ProgramClienteCLI {
 		System.out.println("4 - SAIR");
 	}
 	
-	private static void criarSalaJogo() throws IOException{
+	private static void criarSalaJogo() throws IOException, WarValidationException{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("Digite o seu login: ");
@@ -82,6 +84,8 @@ public class ProgramClienteCLI {
 		imprimirCores();
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
+		
+		Jogador jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		String nomeSala = reader.readLine();
@@ -95,11 +99,11 @@ public class ProgramClienteCLI {
 		System.out.println("Qual o numero max de participantes?");
 		int maxPart = Integer.parseInt(reader.readLine());
 		
-		MensagemCriarSalaJogo m = new MensagemCriarSalaJogo(login, cor, nomeSala, senha, maxPart, servidor);	
+		MensagemCriarSalaJogo m = new MensagemCriarSalaJogo(jogador, nomeSala, senha, maxPart, servidor);	
 		enviar(m);
 	}
 
-	private static void entrarSalaJogo() throws IOException{
+	private static void entrarSalaJogo() throws IOException, WarValidationException{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Digite o seu login: ");
 		String login = reader.readLine();
@@ -109,15 +113,17 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
+		Jogador jogador = new Jogador(login, cor);
+		
 		System.out.println("Digite o nome da sala: ");
 		String nomeSala = reader.readLine();
 		
-		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(login, cor, nomeSala, servidor);
+		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador, nomeSala, servidor);
 		enviar(m);
 
 	}
 	
-	private static void mandarMensagemChat() throws IOException {
+	private static void mandarMensagemChat() throws IOException, WarValidationException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Digite o seu login: ");
 		String login = reader.readLine();
@@ -125,7 +131,10 @@ public class ProgramClienteCLI {
 		System.out.println("Digite a sua mensagem: ");
 		String mensagem = reader.readLine();
 		System.out.println("\n\n");
-		MensagemChat m = new MensagemChat(login, mensagem, servidor);
+		
+		Jogador jogador = new Jogador(login, 0);
+		
+		MensagemChat m = new MensagemChat(jogador, mensagem, servidor);
 		enviar(m);
 		
 	}

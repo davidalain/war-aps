@@ -44,4 +44,6 @@ public class MensagemErro
 	public static final String SALA_JOGO_NULL = "A sala do jogo esta nula";
 
 	public static final String JOGADOR_NAO_CRIADOR = "Jogador não é o criador da sala";
+
+	public static final String JOGADOR_JA_CADASTRADO = "O jogador já está cadastrado.";
 }

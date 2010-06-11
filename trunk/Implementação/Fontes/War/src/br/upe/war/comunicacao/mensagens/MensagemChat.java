@@ -4,19 +4,17 @@ import java.io.IOException;
 
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.jogadores.Jogador;
 
 public class MensagemChat extends Mensagem {
 
 	private String mensagem;
-	
-	private String apelido;
 		
 	
-	public MensagemChat(String apelido, String mensagem, String endereco) {
-		super(endereco);
+	public MensagemChat(Jogador jogador, String mensagem, String endereco) {
+		super(jogador, endereco);
 		this.mensagem = mensagem;
-		this.apelido = apelido;
-	}
+		}
 
 	/**
 	 * 
@@ -37,18 +35,10 @@ public class MensagemChat extends Mensagem {
 		this.mensagem = mensagem;
 	}
 
-	public String getApelido() {
-		return apelido;
-	}
-
-	public void setApelido(String apelido) {
-		this.apelido = apelido;
-	}
-
 	@Override
 	public String resposta() {
 		// TODO Auto-generated method stub
-		return this.apelido + " : " + this.mensagem;
+		return super.getJogador().getLogin() + " : " + this.mensagem;
 	}
 
 }

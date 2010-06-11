@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.excecoes.WarValidationException;
+import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 
 public class MensagemCriarSalaJogo extends Mensagem 
@@ -15,10 +16,6 @@ public class MensagemCriarSalaJogo extends Mensagem
 	 */
 	private static final long serialVersionUID = -1084415134256323493L;
 
-	private String apelido;
-	
-	private int cor;
-	
 	private String nomeSala;
 	
 	private String senha;
@@ -27,22 +24,20 @@ public class MensagemCriarSalaJogo extends Mensagem
 	
 	private int numeroJogadores;
 	
-	public MensagemCriarSalaJogo(String apelido, int cor, String nomeSala,
-			boolean protegida, String senha,  int numeroJogadores, String enderecoDestino) {
-		super(enderecoDestino);
-		this.apelido = apelido;
-		this.cor = cor;
+	public MensagemCriarSalaJogo(Jogador jogador, String nomeSala,
+			boolean protegida, String senha,  int numeroJogadores, String enderecoDestino) throws WarValidationException {
+		
+		super(jogador, enderecoDestino);
 		this.nomeSala = nomeSala;
 		this.senha = senha;
 		this.protegida = protegida;
 		this.numeroJogadores = numeroJogadores;
 	}
 	
-	public MensagemCriarSalaJogo(String apelido, int cor, String nomeSala,
-			boolean protegida, int numeroJogadores, String enderecoDestino) {
-		super(enderecoDestino);
-		this.apelido = apelido;
-		this.cor = cor;
+	public MensagemCriarSalaJogo(Jogador jogador, String nomeSala,
+			boolean protegida, int numeroJogadores, String enderecoDestino) throws WarValidationException {
+		
+		super(jogador, enderecoDestino);
 		this.nomeSala = nomeSala;
 		this.protegida = protegida;
 		this.numeroJogadores = numeroJogadores;
@@ -56,9 +51,9 @@ public class MensagemCriarSalaJogo extends Mensagem
 		ParametrosCriarSalaJogo parametros = null;
 		
 		if(!protegida)
-			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala,  numeroJogadores);
+			parametros = new ParametrosCriarSalaJogo(super.getJogador().getLogin(), super.getJogador().getCor(), nomeSala,  numeroJogadores);
 		else
-			parametros = new ParametrosCriarSalaJogo(apelido, cor, nomeSala, senha, numeroJogadores);
+			parametros = new ParametrosCriarSalaJogo(super.getJogador().getLogin(), super.getJogador().getCor(), nomeSala, senha, numeroJogadores);
 		
 		fachada.criarSalaJogo(parametros);
 		
@@ -67,7 +62,6 @@ public class MensagemCriarSalaJogo extends Mensagem
 	}
 	
 	public String resposta(){
-		return this.apelido + " criou a sala : " + this.nomeSala;
+		return super.getJogador().getLogin() + " criou a sala : " + this.nomeSala;
 	}
-
 }
