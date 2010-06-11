@@ -89,7 +89,7 @@ public class Jogo {
 		ArrayList<Objetivo> possiveisObjetivos = fabrica.getPossiveisObjetivos(this.jogadores);
 		Objetivo o = null;
 		ArrayList<Objetivo> usados = new ArrayList<Objetivo>();
-		int i = new Random().nextInt(14-this.jogadores.size());
+		int i = new Random().nextInt(this.jogadores.size()+8);
 		for(Jogador j : jogadores){
 			o = possiveisObjetivos.get(i);
 			
@@ -98,10 +98,7 @@ public class Jogo {
 				j.setObjetivo(o);
 			}
 			
-			if(i == 13-this.jogadores.size())
-				i = 0;
-			else
-				i++;
+			i = new Random().nextInt(this.jogadores.size()+8);
 		}
 		
 	}

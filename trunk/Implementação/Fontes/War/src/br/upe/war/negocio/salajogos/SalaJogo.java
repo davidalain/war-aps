@@ -1,5 +1,6 @@
 package br.upe.war.negocio.salajogos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,8 +12,13 @@ import br.upe.war.negocio.jogos.Jogo;
 import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
-public class SalaJogo 
+public class SalaJogo implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Jogo jogo;
 	
 	private ArrayList<Jogador> jogadores;

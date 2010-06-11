@@ -9,6 +9,7 @@ import br.upe.war.comunicacao.mensagens.Mensagem;
 import br.upe.war.comunicacao.mensagens.MensagemChat;
 import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
 import br.upe.war.comunicacao.mensagens.MensagemEntrarSalaJogo;
+import br.upe.war.comunicacao.mensagens.MensagemEstadoTerritorios;
 import br.upe.war.comunicacao.mensagens.MensagemIniciarJogo;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacoteCliente;
@@ -53,7 +54,11 @@ public class ProgramClienteCLI {
 					break;
 				case 4:
 					iniciarJogo();
+					break;
 				case 5:
+					estadoTerritorios();
+					break;
+				case 6:
 					sair = true;
 					break;
 				default:
@@ -74,14 +79,16 @@ public class ProgramClienteCLI {
 	private static void imprimirMenu(){
 		System.out.println("*** MENU ***");
 		System.out.println("Digite a opcao desejada:");
-		if(jogador == null){
+		//if(jogador == null){
 			System.out.println("1 - Criar uma sala de jogo");
 			System.out.println("2 - Inserir um jogador em uma sala");
-		}
+		//}
 		System.out.println("3 - Enviar mensagem no chat");
-		if(nomeSala != null)
+		if(nomeSala != null){
 			System.out.println("4 - Inicia Jodo da sala");
-		System.out.println("5 - SAIR");
+			System.out.println("5 - Mostrar estado dos territorios");
+		}
+		System.out.println("6 - SAIR");
 	}
 	
 	private static void criarSalaJogo() throws IOException, WarValidationException{
@@ -123,12 +130,12 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		jogador = new Jogador(login, cor);
+		Jogador jogador2 = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		nomeSala = reader.readLine();
 		
-		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador, nomeSala, servidor);
+		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador2, nomeSala, servidor);
 		enviar(m);
 
 	}
@@ -145,8 +152,13 @@ public class ProgramClienteCLI {
 		
 	}
 	
-	private static void iniciarJogo() throws IOException {
+	private static void iniciarJogo() throws IOException, WarValidationException {
 		MensagemIniciarJogo m = new MensagemIniciarJogo(nomeSala, jogador, servidor);
+		enviar(m);
+	}
+	
+	private static void estadoTerritorios() throws IOException{
+		MensagemEstadoTerritorios m = new MensagemEstadoTerritorios(jogador, nomeSala, servidor);
 		enviar(m);
 	}
 	
