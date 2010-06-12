@@ -111,8 +111,8 @@ public class Ataque
 		}
 		
 		int[] resultadosDefesa = {0, 0, 0};
-		/*int j = 0;
-		for(Dado d : this.dadosDefesa){
+		int j = 0;
+		/*for(Dado d : this.dadosDefesa){
 			resultadosDefesa[j] = d.rolar();
 			j++;
 		}*/
