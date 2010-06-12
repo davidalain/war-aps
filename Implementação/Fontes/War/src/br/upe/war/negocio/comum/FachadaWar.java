@@ -2,6 +2,7 @@
 
 import java.util.Iterator;
 
+import br.upe.war.negocio.ataques.ParametrosAtaque;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
@@ -34,6 +35,10 @@ public class FachadaWar
 	public void povoarTerritorioConquistado(ParametrosPovoarTerritorioConquistado parametros) throws WarException
 	{
 		this.salasJogos.povoarTerritorioConquistado(parametros);
+	}
+	
+	public void atacarTerritorio(ParametrosAtaque parametros) throws WarException{
+		this.salasJogos.atacarTerritorio(parametros);
 	}
 	
 	public void criarSalaJogo(ParametrosCriarSalaJogo parametros) throws WarValidationException

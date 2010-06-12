@@ -1,6 +1,14 @@
 package br.upe.war.negocio.grafo;
 
-public abstract class Vertice {
+import java.io.Serializable;
+
+public abstract class Vertice implements Serializable{
+		
+	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		private int id;
 	
 		public Vertice(int id)

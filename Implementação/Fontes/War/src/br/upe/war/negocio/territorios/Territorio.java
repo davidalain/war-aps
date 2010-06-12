@@ -6,6 +6,10 @@ import br.upe.war.negocio.jogadores.Jogador;
 
 
 public class Territorio extends Vertice {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int quantidadeExercito;
 	private String nome;
 	private Jogador dominante;

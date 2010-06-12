@@ -3,6 +3,7 @@ package br.upe.war.negocio.salajogos;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import br.upe.war.negocio.ataques.ParametrosAtaque;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
@@ -104,6 +105,12 @@ public class ControladorSalaJogo
 	public Iterator<Territorio> obterTerritorios(String nomeSalaJogo) {
 		SalaJogo s = this.getSala(nomeSalaJogo);
 		return s.obterTerritorios();
+	}
+
+	public void atacarTerritorio(ParametrosAtaque parametros) throws WarException {
+		SalaJogo s = this.getSala(parametros.getSalaJogo().getNomeSala());
+		s.atacarTerritorio(parametros);
+		
 	}
 
 }
