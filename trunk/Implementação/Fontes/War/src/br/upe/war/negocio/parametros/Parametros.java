@@ -1,10 +1,16 @@
 package br.upe.war.negocio.parametros;
 
+import java.io.Serializable;
+
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.salajogos.SalaJogo;
 
 
-public abstract class Parametros {
+public abstract class Parametros implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private SalaJogo salaJogo;
 	private Jogador jogador;
 	

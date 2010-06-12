@@ -354,7 +354,39 @@ public class Mapa implements Grafo {
 		
 		return null;
 		
-	}	
+	}
+	
+	public void atualizatTerritorio(Territorio t){
+		Territorio atual = null;
+		for (Continente c : this.continentes) 
+		{
+			Iterator<Territorio> territoriosContinente = c.obterTerritorios();
+			
+			while(territoriosContinente.hasNext())
+			{
+				atual = territoriosContinente.next();
+				if(atual.getNome().equals(t.getNome()))
+					atual.setQuantidadeExercito(t.getQuantidadeExercito());
+			}
+		}
+	}
+
+	public Territorio obterTerritorio(String atacante) {
+		Territorio atual = null;
+		for (Continente c : this.continentes) 
+		{
+			Iterator<Territorio> territoriosContinente = c.obterTerritorios();
+			
+			while(territoriosContinente.hasNext())
+			{
+				atual = territoriosContinente.next();
+				if(atual.getNome().equals(atacante))
+					return atual;
+			}
+		}
+		
+		return null;
+	}
 	 
 }
  

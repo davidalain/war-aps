@@ -7,13 +7,20 @@ import br.upe.war.negocio.territorios.Territorio;
 
 public class ParametrosAtaque extends Parametros{
 	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Territorio atacante;
 	private Territorio defensor;
 	private int quantidadeExercito;
 	
-	public ParametrosAtaque(SalaJogo jogo, Jogador jogador) {
+	public ParametrosAtaque(SalaJogo jogo, Jogador jogador, Territorio atacante, Territorio defensor) {
 		super(jogo, jogador);
-		// TODO Auto-generated constructor stub
+		this.atacante = atacante;
+		this.defensor = defensor;
 	}
 	
 	public Territorio getAtacante() {

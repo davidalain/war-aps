@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.comunicacao.mensagens.Mensagem;
+import br.upe.war.comunicacao.mensagens.MensagemAtacar;
 import br.upe.war.comunicacao.mensagens.MensagemChat;
 import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
 import br.upe.war.comunicacao.mensagens.MensagemEntrarSalaJogo;
@@ -15,6 +16,7 @@ import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacoteCliente;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
+import br.upe.war.negocio.territorios.Territorio;
 
 public class ProgramClienteCLI {
 	/**
@@ -22,7 +24,7 @@ public class ProgramClienteCLI {
 	 * @throws IOException 
 	 */
 	private static ControladorComunicacao comunicacao = ControladorComunicacao.getInstance();
-	private static String servidor = "192.168.1.1";
+	private static String servidor = "127.0.0.1";
 	private static Jogador jogador = null;
 	private static String nomeSala = null;
 	
@@ -59,6 +61,9 @@ public class ProgramClienteCLI {
 					estadoTerritorios();
 					break;
 				case 6:
+					atacar();
+					break;
+				case 7:
 					sair = true;
 					break;
 				default:
@@ -72,6 +77,29 @@ public class ProgramClienteCLI {
 	
 
 	
+	private static void atacar() throws IOException, WarValidationException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		
+		System.out.println("Digite o territorio atacante");
+		String nomeTerritorio = reader.readLine();
+		
+		Territorio atacante = new Territorio(0, nomeTerritorio);
+		
+		System.out.println("Digite o territorio defensor");
+		nomeTerritorio = reader.readLine();
+		
+		Territorio defensor = new Territorio(1, nomeTerritorio);
+		
+		System.out.println("Digite o numero de exercitos parao ataque");
+		int quantidadeExercito = Integer.parseInt(reader.readLine());
+		
+		MensagemAtacar m = new MensagemAtacar(jogador, nomeSala, atacante, defensor, quantidadeExercito, servidor);
+		enviar(m);
+	}
+
+
+
+
 	private static void enviar(Mensagem m) throws IOException{
 		comunicacao.enviarMensagem(m);
 	}
@@ -87,8 +115,9 @@ public class ProgramClienteCLI {
 		if(nomeSala != null){
 			System.out.println("4 - Inicia Jodo da sala");
 			System.out.println("5 - Mostrar estado dos territorios");
+			System.out.println("6 - Atacar territorio");
 		}
-		System.out.println("6 - SAIR");
+		System.out.println("7 - SAIR");
 	}
 	
 	private static void criarSalaJogo() throws IOException, WarValidationException{
@@ -130,12 +159,12 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		jogador = new Jogador(login, cor);
+		Jogador jogador2 = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		nomeSala = reader.readLine();
 		
-		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador, nomeSala, servidor);
+		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador2, nomeSala, servidor);
 		enviar(m);
 
 	}

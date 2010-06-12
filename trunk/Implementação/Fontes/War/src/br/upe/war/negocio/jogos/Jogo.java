@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import br.upe.war.negocio.ataques.ParametrosAtaque;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
-import br.upe.war.negocio.cartas.Carta;
 import br.upe.war.negocio.excecoes.WarException;
+import br.upe.war.negocio.fases.FaseAtaque;
 import br.upe.war.negocio.jogadas.Jogada;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.mapas.Mapa;
@@ -17,7 +18,7 @@ import br.upe.war.negocio.util.MensagemErro;
 
 public class Jogo {
 	private ArrayList<Jogador> jogadores;
-	private ArrayList<Carta> cartas;
+	//private ArrayList<Carta> cartas;
 	private Jogada jogadaAtual;
 	private Mapa mapa;
 	
@@ -73,6 +74,9 @@ public class Jogo {
 			territorio.setDominante(jogador);
 			territorio.addExercito(1);
 			
+			if(territorio.getNome().equals("BRASIL") || territorio.getNome().equals("ARGENTINA") )
+				territorio.addExercito(4);
+			
 			if(i == this.jogadores.size() - 1)
 			{
 				i = 0;
@@ -105,6 +109,30 @@ public class Jogo {
 
 	public Iterator<Territorio> obterTerritorios() {
 		return this.mapa.obterTerritorios();
+	}
+
+	public void atacarTerritorio(ParametrosAtaque parametros) throws WarException {
+		String atacante = parametros.getAtacante().getNome();
+		parametros.setAtacante(this.mapa.obterTerritorio(atacante));
+		
+		String defensor = parametros.getDefensor().getNome();
+		parametros.setDefensor(this.mapa.obterTerritorio(defensor));
+		
+		if(!this.mapa.ehVizinho(parametros.getAtacante(), parametros.getDefensor())){
+			throw new WarException(MensagemErro.TERRITORIOS_NAO_CONTIGUOS);
+		}
+		
+		Territorio[] retorno = this.jogadaAtual.atacarTerritorio(parametros);
+			
+		this.mapa.atualizatTerritorio(retorno[0]);
+		this.mapa.atualizatTerritorio(retorno[1]);
+
+	}
+
+	public void comecarJogadas(Jogador jogador) {
+		FaseAtaque fase = new FaseAtaque();
+		this.jogadaAtual = new Jogada(fase, jogador);
+		
 	}
 	
 }

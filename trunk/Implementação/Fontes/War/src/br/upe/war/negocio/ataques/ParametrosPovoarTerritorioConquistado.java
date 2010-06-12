@@ -6,6 +6,10 @@ import br.upe.war.negocio.salajogos.SalaJogo;
 
 
 public class ParametrosPovoarTerritorioConquistado extends Parametros {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int quantidadeExercito;
 	
 	public ParametrosPovoarTerritorioConquistado(SalaJogo salaJogo, Jogador jogador, int quantidadeExercito){

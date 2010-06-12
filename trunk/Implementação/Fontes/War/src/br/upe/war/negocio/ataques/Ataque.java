@@ -99,4 +99,39 @@ public class Ataque
 	{
 		return quantidade > 0;
 	}
+
+	public Territorio[] atacar() {
+		Territorio[] retorno = new Territorio[2];
+		
+		int[] resultadosAtaque = new int[3];
+		int i = 0;
+		for(Dado d : this.dadosAtaque){
+			resultadosAtaque[i] = d.rolar();
+			i++;
+		}
+		
+		int[] resultadosDefesa = {0, 0, 0};
+		/*int j = 0;
+		for(Dado d : this.dadosDefesa){
+			resultadosDefesa[j] = d.rolar();
+			j++;
+		}*/
+		
+		int countAtaque = 0;
+		int countDefesa = 0;
+		for(i=0; i<3; i++){
+			if(resultadosAtaque[i] > resultadosDefesa[i])
+				countAtaque++;
+			else
+				countDefesa++;
+		}
+	
+		this.territorioDefensor.setQuantidadeExercito(this.territorioDefensor.getQuantidadeExercito()-countAtaque);
+		this.territorioAtacante.setQuantidadeExercito(this.territorioAtacante.getQuantidadeExercito()-countDefesa);
+		
+		retorno[0] = this.territorioAtacante;
+		retorno[1] = this.territorioDefensor;
+		
+		return retorno;
+	}
 }

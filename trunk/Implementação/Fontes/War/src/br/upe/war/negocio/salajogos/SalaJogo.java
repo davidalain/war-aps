@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import br.upe.war.negocio.ataques.ParametrosAtaque;
 import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
@@ -82,6 +83,7 @@ public class SalaJogo implements Serializable
 		
 		this.jogo.distribuirObjetivos();
 		this.jogo.distribuirTerritorios();
+		this.jogo.comecarJogadas(this.getCriador());
 	}
 
 	/**
@@ -163,6 +165,10 @@ public class SalaJogo implements Serializable
 
 	public Iterator<Territorio> obterTerritorios() {
 		return this.jogo.obterTerritorios();
+	}
+
+	public void atacarTerritorio(ParametrosAtaque parametros) throws WarException {
+		this.jogo.atacarTerritorio(parametros);		
 	}
 	
 	
