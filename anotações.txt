@@ -1,5 +1,3 @@
 - Criar arestas do mapa*
 - Interface
-- Chat?
-- Mapeamento jogador -> Ip
-- Mensagem broadcast
+
