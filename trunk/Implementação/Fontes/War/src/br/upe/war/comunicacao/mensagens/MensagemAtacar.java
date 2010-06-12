@@ -2,6 +2,7 @@ package br.upe.war.comunicacao.mensagens;
 
 import java.io.IOException;
 
+import br.upe.war.comunicacao.comum.ControladorComunicacao;
 import br.upe.war.negocio.ataques.ParametrosAtaque;
 import br.upe.war.negocio.comum.FachadaWar;
 import br.upe.war.negocio.excecoes.WarException;
@@ -41,8 +42,8 @@ public class MensagemAtacar extends Mensagem {
 		
 		//MensagemDefesa m = new MensagemDefesa();
 		
-		/*ControladorComunicacao com = ControladorComunicacao.getInstance();
-		com.enviarMensagemResposta(this);*/
+		ControladorComunicacao com = ControladorComunicacao.getInstance();
+		com.enviarMensagemResposta(this);
 
 	}
 
