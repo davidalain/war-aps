@@ -38,11 +38,13 @@ public class ControladorComunicacao
 	
 	public void enviarMensagem(Mensagem m) throws IOException
 	{
+		
 		EnvioPacote.enviarMensagem(m, 6789);
 	}
 	
 	public void enviarMensagemResposta(Mensagem m) throws IOException
 	{
+
 		for(JogadorComunicacao j : jogadores){
 			m.setEndereco(j.getIp());
 			EnvioPacote.enviarMensagem(m, 1234);
