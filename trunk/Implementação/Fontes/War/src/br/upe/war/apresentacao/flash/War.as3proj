@@ -4,11 +4,11 @@
   <output>
     <movie disabled="False" />
     <movie input="" />
-    <movie path="bin\WarAPS.swf" />
+    <movie path="bin\War.swf" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
-    <movie version="9" />
+    <movie width="600" />
+    <movie height="400" />
+    <movie version="10" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
