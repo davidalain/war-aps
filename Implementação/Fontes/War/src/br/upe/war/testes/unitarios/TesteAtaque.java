@@ -22,12 +22,13 @@ public class TesteAtaque extends TestCase
 	@Override
 	protected void setUp() throws Exception 
 	{
-		this.jogadorAtacante = new Jogador("Jogador 1");		
+		int cor = 1;
+		this.jogadorAtacante = new Jogador("Jogador 1", cor );		
 		this.territorioAtacante = new Territorio(1, "Territorio 1");
 		this.territorioAtacante.setQuantidadeExercito(3);
 		this.territorioAtacante.setDominante(this.jogadorAtacante);
 		
-		Jogador jogadorDefensor = new Jogador("Jogador 2");
+		Jogador jogadorDefensor = new Jogador("Jogador 2", cor);
 		this.territorioDefensor = new Territorio(2, "Territorio 2");
 		this.territorioDefensor.setDominante(jogadorDefensor);
 		this.territorioDefensor.setQuantidadeExercito(3);
