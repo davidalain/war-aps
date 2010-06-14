@@ -41,12 +41,14 @@
       <test name="br.upe.war.testes.TesteTodos" todir="${output}" />
     </junit>
   	
+  	<!--
   	<junitreport todir="${output}">
   		<fileset dir="${output}">
   			<include name="TEST-*.xml"/>
   		</fileset>
   		<report format="frames" todir="${output}/html"/>
   	</junitreport>
+  	-->
   </target>
 
 
