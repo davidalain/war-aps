@@ -159,12 +159,12 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		Jogador jogador2 = new Jogador(login, cor);
+		jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		nomeSala = reader.readLine();
 		
-		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador2, nomeSala, servidor);
+		MensagemEntrarSalaJogo m = new MensagemEntrarSalaJogo(jogador, nomeSala, servidor);
 		enviar(m);
 
 	}
