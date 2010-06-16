@@ -10,6 +10,7 @@ import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
 import br.upe.war.negocio.jogos.Jogo;
+import br.upe.war.negocio.objetivos.Objetivo;
 import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
@@ -169,6 +170,10 @@ public class SalaJogo implements Serializable
 
 	public void atacarTerritorio(ParametrosAtaque parametros) throws WarException {
 		this.jogo.atacarTerritorio(parametros);		
+	}
+
+	public Iterator<Objetivo> obterObjetivos() {
+		return this.jogo.obterObjetivos();
 	}
 	
 	

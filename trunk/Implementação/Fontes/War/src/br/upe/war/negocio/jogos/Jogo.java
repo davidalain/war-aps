@@ -134,5 +134,15 @@ public class Jogo {
 		this.jogadaAtual = new Jogada(fase, jogador);
 		
 	}
+
+	public Iterator<Objetivo> obterObjetivos() {
+		ArrayList<Objetivo> objetivos = new ArrayList<Objetivo>();
+		
+		for(Jogador j : this.jogadores){
+			objetivos.add(j.getObjetivo());
+		}
+		
+		return objetivos.iterator();
+	}
 	
 }

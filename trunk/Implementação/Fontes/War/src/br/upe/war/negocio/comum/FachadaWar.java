@@ -7,6 +7,7 @@ import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
+import br.upe.war.negocio.objetivos.Objetivo;
 import br.upe.war.negocio.salajogos.ControladorSalaJogo;
 import br.upe.war.negocio.salajogos.ParametrosCriarSalaJogo;
 import br.upe.war.negocio.salajogos.SalaJogo;
@@ -72,5 +73,13 @@ public class FachadaWar
 
 	public Iterator<Territorio> obterTerritorios(String nomeSalaJogo) {
 		return this.salasJogos.obterTerritorios(nomeSalaJogo);
+	}
+	
+	public Iterator<Objetivo> obterObjetivos(String nomeSalaJogo){
+		return this.salasJogos.obterObjetivos(nomeSalaJogo);
+	}
+	
+	public Iterator<Jogador> obterJogadores(String nomeSalaJogo){
+		return this.salasJogos.obterJogadores(nomeSalaJogo);
 	}
 }

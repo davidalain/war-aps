@@ -12,6 +12,7 @@ import br.upe.war.comunicacao.mensagens.MensagemCriarSalaJogo;
 import br.upe.war.comunicacao.mensagens.MensagemEntrarSalaJogo;
 import br.upe.war.comunicacao.mensagens.MensagemEstadoTerritorios;
 import br.upe.war.comunicacao.mensagens.MensagemIniciarJogo;
+import br.upe.war.comunicacao.mensagens.MensagemObjetivos;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacote;
 import br.upe.war.comunicacao.recebimento.ThreadRecebimentoPacoteCliente;
 import br.upe.war.negocio.excecoes.WarValidationException;
@@ -61,9 +62,12 @@ public class ProgramClienteCLI {
 					estadoTerritorios();
 					break;
 				case 6:
-					atacar();
+					objetivos();
 					break;
 				case 7:
+					atacar();
+					break;
+				case 8:
 					sair = true;
 					break;
 				default:
@@ -77,6 +81,14 @@ public class ProgramClienteCLI {
 	
 
 	
+	private static void objetivos() throws IOException {
+		MensagemObjetivos m = new MensagemObjetivos(jogador, nomeSala, servidor);
+		enviar(m);
+	}
+
+
+
+
 	private static void atacar() throws IOException, WarValidationException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -115,9 +127,10 @@ public class ProgramClienteCLI {
 		if(nomeSala != null){
 			System.out.println("4 - Inicia Jodo da sala");
 			System.out.println("5 - Mostrar estado dos territorios");
-			System.out.println("6 - Atacar territorio");
+			System.out.println("6 - Mostrar todos os objetivos");
+			System.out.println("7 - Atacar territorio");
 		}
-		System.out.println("7 - SAIR");
+		System.out.println("8 - SAIR");
 	}
 	
 	private static void criarSalaJogo() throws IOException, WarValidationException{
@@ -159,7 +172,7 @@ public class ProgramClienteCLI {
 		System.out.println();
 		int cor = Integer.parseInt(reader.readLine());
 		
-		jogador = new Jogador(login, cor);
+		Jogador jogador = new Jogador(login, cor);
 		
 		System.out.println("Digite o nome da sala: ");
 		nomeSala = reader.readLine();

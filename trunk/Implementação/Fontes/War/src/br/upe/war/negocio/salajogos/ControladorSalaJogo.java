@@ -8,6 +8,7 @@ import br.upe.war.negocio.ataques.ParametrosPovoarTerritorioConquistado;
 import br.upe.war.negocio.excecoes.WarException;
 import br.upe.war.negocio.excecoes.WarValidationException;
 import br.upe.war.negocio.jogadores.Jogador;
+import br.upe.war.negocio.objetivos.Objetivo;
 import br.upe.war.negocio.territorios.Territorio;
 import br.upe.war.negocio.util.MensagemErro;
 
@@ -111,6 +112,16 @@ public class ControladorSalaJogo
 		SalaJogo s = this.getSala(parametros.getSalaJogo().getNomeSala());
 		s.atacarTerritorio(parametros);
 		
+	}
+
+	public Iterator<Objetivo> obterObjetivos(String nomeSalaJogo) {
+		SalaJogo s = this.getSala(nomeSalaJogo);
+		return s.obterObjetivos();
+	}
+
+	public Iterator<Jogador> obterJogadores(String nomeSalaJogo) {
+		SalaJogo s = this.getSala(nomeSalaJogo);
+		return s.obterJogadores();
 	}
 
 }
